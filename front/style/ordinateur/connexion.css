@@ -1,0 +1,15 @@
+#connect_form{
+    background-color: #B6D7A8;
+    border: 3px black solid;
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    width: 250px;
+    height: 300px;
+    margin-left: -125px;
+    margin-top: -150px;
+    text-align: center;
+}
+#response_area{
+    color: red;
+}

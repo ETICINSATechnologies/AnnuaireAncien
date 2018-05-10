@@ -1,0 +1,12 @@
+#connect_form{
+    background-color: #B6D7A8;
+    border: 3px black solid;
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    width: 200px;
+    height: 200px;
+    margin-left: -100px;
+    margin-top: -100px;
+
+}

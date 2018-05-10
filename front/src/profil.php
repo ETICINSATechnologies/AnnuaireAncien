@@ -7,6 +7,6 @@
 <?php include 'nav.php'; ?>
 
 <?php include 'footer.php'; ?>
-<?php include '../script/jsConfig.php'; ?>
+<?php include '../script/config.php'; ?>
 </body>
 </html>

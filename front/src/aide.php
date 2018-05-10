@@ -10,12 +10,6 @@
 <?php include 'nav.php'; ?>
 
 <section>
-    <div class="mandat" id="mandat_left"></div>
-    <div id="div_accueil">
-        <p id="bienvenue" class="accueil"> Bienvenue sur l'annuaire des anciens</p>
-        <p id="etic" class="accueil"> ETIC INSA TECHNOLOGIES</p>
-    </div>
-    <div class="mandat" id="mandat_right"></div>
 </section>
 
 <?php include 'footer.php'; ?>

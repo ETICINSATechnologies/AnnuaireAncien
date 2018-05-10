@@ -1,0 +1,110 @@
+:root {
+    --header-height: 110px;
+    --header-width: 100%;
+    --nav-height: 50px;
+}
+
+html, body {
+    margin: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-rows: var(--header-height) var(--nav-height) 1fr;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+
+    background-color: #6aa84f;
+
+    vertical-align: middle;
+
+    width: var(--header-width);
+    height: var(--header-height);
+}
+
+#accueil {
+    grid-row: 1;
+    grid-column: 1;
+
+    margin: auto;
+
+    color: white;
+    background-color: #274e13;
+
+    font-size: calc(0.3 * var(--header-height));
+
+    width: 70%;
+    height: 50%;
+}
+
+#accueil:hover {
+    cursor: pointer;
+}
+
+#title {
+    grid-row: 1;
+    grid-column: 1 / 3;
+
+    color: white;
+
+    text-align: center;
+    margin: auto;
+
+    text-transform: uppercase;
+
+    font-size: calc(0.7 * var(--header-height));
+}
+
+#title:hover {
+    cursor: pointer;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: 30% 1fr 1fr 25% 5%;
+
+    background-color: #38761d;
+
+    width: 100%;
+    height: 100%;
+}
+
+nav * {
+    margin: auto;
+
+    font-size: calc(0.5 * var(--nav-height));
+
+    width: 100%;
+    height: 80%;
+}
+
+nav *:hover {
+    cursor: pointer;
+}
+
+#rechercher {
+    grid-column: 2;
+}
+
+#connexion, #profil, #admin {
+    grid-column: 3;
+}
+
+#profil, #admin {
+    display: none;
+}
+
+#help_icon {
+    grid-column: 5;
+
+    margin: auto;
+
+    height: calc(0.7 * var(--nav-height));
+    width: calc(0.7 * var(--nav-height));
+}

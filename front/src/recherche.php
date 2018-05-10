@@ -26,12 +26,10 @@
     </div>
 
     <div id="info_area">
-        <div id="info">
-            <p>
-                Vous pouvez effectuer une recherche sur l'ensemble des membres, en fonction des différents critères ci-contre. <br>
-                Aucun n'est obligatoire mais la recherche doit s'effectuer sur au moins un de ces critères
-            </p>
-        </div>
+        <p>
+            Vous pouvez effectuer une recherche sur l'ensemble des membres, en fonction des différents critères ci-contre. <br>
+            Aucun n'est obligatoire mais la recherche doit s'effectuer sur au moins un de ces critères
+        </p>
     </div>
 
     <div id="response_area">

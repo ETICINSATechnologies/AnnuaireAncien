@@ -1,4 +1,4 @@
-function getFormValues()
+function getFormValues1()
 {
     var validValues = {};
     var validRequest = false;
@@ -8,6 +8,7 @@ function getFormValues()
         if (this.value !== '')
         {
             validRequest = true;
+            console.log(this.value.toLowerCase());
             validValues[this.id] = this.value;
         }
     });
@@ -18,7 +19,7 @@ function getFormValues()
 }
 
 
-function format(attribute, stringToFormat)
+function format1(attribute, stringToFormat)
 {
     var newString;
 
@@ -68,7 +69,7 @@ function createTable(attributes, columnsName, rows, htmlId)
             for (var k = 0; k < attributes.length; k++)
             {
                 cell = document.createElement("td");
-                cellText = document.createTextNode(format(attributes[k], rows[j][attributes[k]]));
+                cellText = document.createTextNode(format1(attributes[k], rows[j][attributes[k]]));
                 cell.appendChild(cellText);
                 tr.appendChild(cell);
             }

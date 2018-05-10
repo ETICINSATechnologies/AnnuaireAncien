@@ -1,7 +1,7 @@
 <?php
 include 'connectDB.php';
 
-$validAttributes = array('firstname', 'lastname', 'company', 'mandate_year');
+$validAttributes = array('firstname', 'lastname', 'company', 'mandate_year', 'id');
 
 $method = $_GET;
 $parametersNb = sizeof($method);
@@ -26,7 +26,8 @@ if (validateRequest($validAttributes, $attributes))
 
     for ($i = 0; $i < $parametersNb; $i++)
     {
-        $stmt->bindParam(':value' . $i, $values[$i]);
+        $value = strtolower($values[$i]);
+        $stmt->bindParam(':value' . $i, $value);
     }
 
     $stmt->execute();
@@ -40,7 +41,6 @@ if (validateRequest($validAttributes, $attributes))
         echo json_encode($data);
     }
 }
-
 
 function validateRequest($validAttributes, $attributes)
 {

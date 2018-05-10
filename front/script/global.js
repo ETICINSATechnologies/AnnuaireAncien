@@ -18,7 +18,7 @@ function getFormValues(form_id)
 }
 
 
-function format(attribute, stringToFormat)
+/*function format(attribute, stringToFormat)
 {
     var newString;
     console.log(attribute, stringToFormat);
@@ -46,7 +46,7 @@ function format(attribute, stringToFormat)
     }
 
     return newString;
-}
+}*/
 
 
 $("#accueil").click(function ()

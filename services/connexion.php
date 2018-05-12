@@ -9,8 +9,7 @@ $method = $_GET;
 $parametersNb = sizeof($method);
 $attributes = array_keys($method);
 $values = array_values($method);
-
-
+$values[1] = hash('sha512', $values[1]);
 if (validateRequest($validAttributes, $attributes))
 {
     $sql = 'SELECT id FROM membres ';

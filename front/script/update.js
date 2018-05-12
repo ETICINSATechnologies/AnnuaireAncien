@@ -1,18 +1,18 @@
 
-function connect()
+function update()
 {
     $(document).ready(function ()
     {
-        var parameters = getFormValues("#connect_form");
+        var parameters = getFormValues("#profil_form");
 
         parameters['email']=parameters['email'].toLowerCase();
 
         document.getElementById("response_area").innerText = "";
 
-        if (Object.keys(parameters).length===2)
+        if (Object.keys(parameters).length>=8)
         {
             $.get(
-                '../../services/connexion.php',
+                '../../services/update.php',
                 parameters,
                 function (response)
                 {
@@ -20,19 +20,21 @@ function connect()
                     try
                     {
                         if(response){
-                            document.location.href="profil.php";
+
+                            document.getElementById("response_area").innerHTML = "<p> Les informations ont bien été sauvegardés!</p>";
                         }
                         else{
-                            document.getElementById("response_area").innerHTML = "<p> Identifiant ou mot de passe invalide !</p>";
+                            document.getElementById("response_area").innerHTML = "<p> Un problème est survenu lors de la sauvegarde de vos informations , veuillez recommencer ultérieurement!</p>";
                         }
                     }
                     catch (e)
                     {
-                        document.getElementById("response_area").innerHTML = "<p> Identifiant ou mot de passe invalide !</p>";
+                        document.getElementById("response_area").innerHTML = "<p> Un problème est survenu lors de la sauvegarde de vos informations , veuillez recommencer ultérieurement!</p>";
                     }
                 },
                 'text'
             );
+
         }
         else
         {
@@ -40,5 +42,4 @@ function connect()
         }
     });
 }
-
 

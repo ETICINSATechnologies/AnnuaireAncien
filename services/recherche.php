@@ -26,8 +26,8 @@ if (validateRequest($validAttributes, $attributes))
 
     for ($i = 0; $i < $parametersNb; $i++)
     {
-        $value = strtolower($values[$i]);
-        $stmt->bindParam(':value' . $i, $value);
+        $values[$i] = strtolower($values[$i]);
+        $stmt->bindParam(':value' . $i, $values[$i]);
     }
 
     $stmt->execute();

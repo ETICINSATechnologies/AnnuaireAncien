@@ -20,5 +20,6 @@
 
 <?php include 'footer.php'; ?>
 <?php include '../script/config.php'; ?>
+<script src="../script/accueil.js"></script>
 </body>
 </html>

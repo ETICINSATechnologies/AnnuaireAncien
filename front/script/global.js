@@ -1,3 +1,5 @@
+var default_photo = "'../../public/image/no_photo.png'";
+
 function getFormValues(form_id)
 {
     var validValues = {};
@@ -17,36 +19,39 @@ function getFormValues(form_id)
     return false;
 }
 
-
-/*function format(attribute, stringToFormat)
+function format(name, values)
 {
-    var newString;
-    console.log(attribute, stringToFormat);
+    var oldString = values[name];
+    var newString = oldString;
 
-    if (attribute === "lastname")
+    if (oldString === undefined)
     {
-        newString = stringToFormat.toUpperCase();
+        newString = "non précisé";
     }
-    else if (attribute === "etic_position")
+    else if (name === "lastname" || name === "department")
     {
-        newString = stringToFormat[0].toUpperCase();
-        newString += stringToFormat.split(" ")[0].slice(1).toLowerCase();
-        newString += " " + stringToFormat.split(" ")[1].toUpperCase();
+        newString = oldString.toUpperCase();
     }
-    else
+    else if (name === "firstname")
     {
-        try {
-            newString = stringToFormat[0].toUpperCase();
-            newString += stringToFormat.slice(1).toLowerCase();
-        }
-        catch (e)
+        newString = oldString[0].toUpperCase();
+        newString += oldString.slice(1).toLowerCase();
+    }
+    else if (name === "etic_position")
+    {
+        try
         {
-            newString = stringToFormat;
+            newString = oldString[0].toUpperCase();
+            newString += oldString.split(" ")[0].slice(1).toLowerCase();
+            newString += " " + oldString.split(" ")[1].toUpperCase();
+        } catch (e)
+        {
+            newString = oldString.toUpperCase();
         }
     }
 
-    return newString;
-}*/
+    return newString
+}
 
 
 $("#accueil").click(function ()

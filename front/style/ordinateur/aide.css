@@ -1,0 +1,26 @@
+section {
+    display: grid;
+    grid-template-rows: 4.7vw 6.7vw 1fr;
+
+    vertical-align: middle;
+    justify-self: center;
+
+    margin: auto;
+
+    width: 90%;
+    height: 80%;
+}
+
+section * {
+    text-align: center;
+    justify-self: center;
+
+    margin: 0 auto;
+    font-size: 3.7vw;
+}
+
+#div2 {
+    cursor: pointer;
+    color: #009e11;
+    text-decoration: underline;
+}

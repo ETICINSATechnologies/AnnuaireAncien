@@ -3,7 +3,6 @@
 <head>
     <?php include 'head.php'?>
     <link rel="stylesheet" href="../style/ordinateur/recherche.css">
-    <script src="../script/recherche.js"></script>
 </head>
 
 <body>
@@ -25,19 +24,21 @@
     </form>
     </div>
 
+    <div id="response_area">
+
+    </div>
+
     <div id="info_area">
-        <p>
+        <p id="p_info">
             Vous pouvez effectuer une recherche sur l'ensemble des membres, en fonction des différents critères ci-contre. <br>
             Aucun n'est obligatoire mais la recherche doit s'effectuer sur au moins un de ces critères
         </p>
     </div>
 
-    <div id="response_area">
-
-    </div>
 </section>
 
 <?php include 'footer.php'; ?>
 <?php include '../script/config.php'; ?>
+<script src="../script/recherche.js"></script>
 </body>
 </html>

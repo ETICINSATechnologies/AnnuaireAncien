@@ -5,6 +5,7 @@ function search()
         var parameters = getFormValues("#search_form");
 
         document.getElementById("response_area").innerText = "";
+        document.getElementById("response_area").style.setProperty("border", "");
 
         if (parameters)
         {
@@ -27,7 +28,7 @@ function search()
                     }
                     catch (e)
                     {
-                        document.getElementById("info_area").innerHTML = "<p> La recherche que vous avez effectuée " +
+                        document.getElementById("info_area").innerHTML = "<p id='p_info'> La recherche que vous avez effectuée " +
                             "n'a donné aucun résultats. <br>" + "Assurez-vous d'avoir correctement saisi les informations </p>";
                     }
                 },
@@ -36,7 +37,7 @@ function search()
         }
         else
         {
-            document.getElementById("info_area").innerHTML = "<p> Veuillez compléter au moins un champs du formulaire ! </p>";
+            document.getElementById("info_area").innerHTML = "<p id='p_info'> Veuillez compléter au moins un champs du formulaire ! </p>";
         }
     });
 }
@@ -54,7 +55,7 @@ function getInfoMember(id)
             }
             catch (e)
             {
-                document.getElementById("info_area").innerHTML = "<p> La recherche que vous avez effectuée " +
+                document.getElementById("info_area").innerHTML = "<p id='p_info'> La recherche que vous avez effectuée " +
                     "n'a donné aucun résultats. <br>" + "Assurez-vous d'avoir correctement saisi les informations </p>";
             }
         },
@@ -64,6 +65,7 @@ function getInfoMember(id)
 
 function createTable(attributes, columnsName, rows, htmlId, infoId)
 {
+    var container = document.getElementById(htmlId);
     var table = document.createElement("table");
     var thead = document.createElement("thead");
     var tbody = document.createElement("tbody");
@@ -98,49 +100,15 @@ function createTable(attributes, columnsName, rows, htmlId, infoId)
         }
         table.appendChild(thead);
         table.appendChild(tbody);
-        document.getElementById(htmlId).innerHTML = "";
-        document.getElementById(htmlId).appendChild(table);
+        container.innerHTML = "";
+        container.appendChild(table);
+        container.style.setProperty("border", "3px solid black");
     }
     else
     {
         document.getElementById(infoId).innerHTML = "<p> La recherche que vous avez effectuée " +
             "n'a donné aucun résultats. <br>" + "Assurez-vous d'avoir correctement saisi les informations </p>";
     }
-}
-
-function format(name, values)
-{
-    var oldString = values[name];
-    var newString = oldString;
-    console.log(name + " : " + values[name]);
-
-    if (oldString === undefined)
-    {
-        newString = "non précisé";
-    }
-    else if (name === "lastname" || name === "department")
-    {
-        newString = oldString.toUpperCase();
-    }
-    else if (name === "firstname")
-    {
-        newString = oldString[0].toUpperCase();
-        newString += oldString.slice(1).toLowerCase();
-    }
-    else if (name === "etic_position")
-    {
-        try
-        {
-            newString = oldString[0].toUpperCase();
-            newString += oldString.split(" ")[0].slice(1).toLowerCase();
-            newString += " " + oldString.split(" ")[1].toUpperCase();
-        } catch (e)
-        {
-            newString = oldString.toUpperCase();
-        }
-    }
-
-    return newString
 }
 
 function displayInfoMember(infos, htmlId)
@@ -150,6 +118,7 @@ function displayInfoMember(infos, htmlId)
     var div = document.getElementById(htmlId);
     var div_info = document.createElement("div");
     var nomPrenom = document.createElement("p");
+    var img = document.createElement("img");
     var tel = document.createElement("p");
     var coordonnees = document.createElement("p");
 
@@ -163,13 +132,22 @@ function displayInfoMember(infos, htmlId)
         "département : " + format("department", infos);
 
     div_info.id = "info";
+
     nomPrenom.id = "nom_prenom";
     nomPrenom.className = "right";
+
+    img.id = "photo_membre";
+    img.setAttribute("src", infos["photo"]);
+    img.setAttribute("onerror", "this.src=" + default_photo);
+
+    tel.id = "tel";
     tel.className = "right";
+
     coordonnees.id = "coordonnes";
 
     div.innerText = "";
     div.appendChild(div_info);
+    div_info.appendChild(img);
     div_info.appendChild(nomPrenom);
     div_info.appendChild(tel);
     div_info.appendChild(coordonnees);
@@ -184,4 +162,15 @@ function listen()
             getInfoMember(element.id);
         }
     })
+
 }
+
+$(document).ready(function ()
+{
+    $("#search_area").keypress(function (event)
+    {
+        if (event.key === "Enter")
+            search();
+    })
+});
+

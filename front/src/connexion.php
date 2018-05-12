@@ -22,7 +22,7 @@
             <p> <b>Mot de passe </b> </p>
             <input type="text" id="password">
             <br> <br>
-            <a href="aide.php"> Mot de passe oublié ?</a>
+            <a href="recup.php"> Mot de passe oublié ?</a>
             <br> <br>
             <input id="connect_input" type="button" value="Se connecter" onclick="connect()">
 

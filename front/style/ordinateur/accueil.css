@@ -1,21 +1,66 @@
 section {
     display: grid;
-    grid-template-columns: 1fr 70% 1fr;
-    grid-gap: 2%;
+    grid-template-columns: 12vw 1fr 12vw;
+    grid-template-rows: 1fr;
+    grid-gap: 1%;
 
     text-align: center;
-
-    font-size: 100px;
+    width: 100%;
+    height: 100%;
 }
 
 .mandat {
+    display: grid;
+    grid-template-columns: 100%;
+
     background-color: #B6D7A8;
+
+    margin-top: 1px;
+
+    padding: 2%;
+
+    width: 100%;
+    height: 100%;
+}
+
+.mandat p {
+    margin: auto;
+    vertical-align: top;
+
+    font-size: 1vw;
+}
+
+.mandat div {
+    display: grid;
+    grid-template-columns: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.mandat img {
+    justify-self: center;
+
+    height: 100%;
 }
 
 #div_accueil {
     grid-column: 2;
+
+    vertical-align: middle;
+
+    margin: auto;
+
+    font-size: 6vw;
+    width: 80%;
+    height: 80%;
+}
+
+#bienvenue {
+    margin: auto auto 5vh auto;
 }
 
 #etic {
     font-weight: bold;
+
+    margin: auto;
 }

@@ -39,6 +39,6 @@ function insertInfos (row)
     document.getElementById('etic_position').setAttribute('value',row['etic_position']);
     document.getElementById('company').setAttribute('value',row['company']);
     document.getElementById('mandate_year').setAttribute('value',row['mandate_year']);
-    document.getElementById('image').innerHTML="<img src="+row['photo']+"alt=photo de profil>";
+    document.getElementById('image').innerHTML="<img src="+"../images/"+row['photo']+" >";
 }
 

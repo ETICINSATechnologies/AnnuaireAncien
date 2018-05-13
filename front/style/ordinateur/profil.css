@@ -136,3 +136,18 @@
     height: 60%;
     width: 15vw;
 }
+#fenetre{
+    display: none;
+    background-color: #B6D7A8;
+    border: 3px black solid;
+    position:absolute;
+    left: 50%;
+    top: 60%;
+    width: 400px;
+    height: 450px;
+    margin-left: -225px;
+    margin-top: -225px;
+
+    text-align: center;
+}
+

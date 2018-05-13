@@ -13,12 +13,6 @@
 <?php include '../../services/updatePicture.php'; ?>
 
 <section id="form_area">
-    <!--form id="image_form" method="post" action="../../services/updatePicture.php" enctype="multipart/form-data">
-        <label for="icone">Icône du fichier (JPG, PNG ou GIF | max. 15 Ko) :</label><br/>
-        <input type="file" name="icone" id="icone"/><br/>
-
-        <input id="savefile" type="submit" name="submit" value="Envoyer"/>
-    </form-->
 
     <form id="profil_form">
         <div id="image"> </div>
@@ -62,7 +56,28 @@
         </div>
 
     </form>
+
+    <div id="fenetre">
+        <form id="image_form" method="post" action="../../services/updatePicture.php" enctype="multipart/form-data">
+
+            <div id="image2"> </div>
+            <input type="file" name="icone" id="icone" /><br/>
+            <input id="precedent" type="button" value="précedent">
+            <input id="savefile" type="submit" name="submit" value="suivant"/>
+
+
+        </form>
+
+    </div>
 </section>
+<script>
+    document.getElementById('image').addEventListener('click', function() {
+        document.getElementById('fenetre').style.display = 'block';
+    });
+    document.getElementById('precedent').addEventListener('click', function() {
+        document.getElementById('fenetre').style.display = 'none';
+    });
+</script>
 
 
 

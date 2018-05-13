@@ -19,11 +19,11 @@
     <input id="savefile" type="submit" name="submit" value="Envoyer" />
 </form>
 
+<div id="response_area">
 
+</div>
     <form id="profil_form">
-        <div id="response_area">
 
-        </div>
 
         <div id="image">
 

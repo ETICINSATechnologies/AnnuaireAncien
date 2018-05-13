@@ -86,11 +86,7 @@ nav * {
     font-size: 1.7vw;
 
     width: 100%;
-    height: 90%;
-}
-
-nav button {
-    width: 100%;
+    height: 80%;
 }
 
 nav *:hover {
@@ -111,6 +107,7 @@ nav *:hover {
 
 #help_icon {
     grid-column: 5;
+    vertical-align: middle;
 
     margin: auto;
 

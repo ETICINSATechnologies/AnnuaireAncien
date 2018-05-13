@@ -80,10 +80,12 @@ function displayCAMember(ca_length, position, ca_member)
 function listenCA()
 {
     console.log("hello");
-    $(".member").on({
+    $(".member *").on({
         "mousedown": function (evt)
         {
             var element = evt.target.parentNode;
+
+            console.log(element.id);
             window.location = "recherche.php?id=" + element.id;
         }
     })

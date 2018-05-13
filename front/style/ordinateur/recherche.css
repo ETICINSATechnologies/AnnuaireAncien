@@ -156,6 +156,7 @@
 
 #info_area p {
     text-align: center;
+    margin: 0 auto;
 }
 
 #p_info {
@@ -173,15 +174,11 @@
     text-align: center;
 
     border: 3px solid black;
-    padding: 10px;
 
     font-size: 35px;
-    height: 90%;
+    height: 95%;
 }
 
-#info_area p {
-    margin: auto;
-}
 
 #photo_membre {
     grid-row: 1 / 3;

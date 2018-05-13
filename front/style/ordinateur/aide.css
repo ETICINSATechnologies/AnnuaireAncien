@@ -24,3 +24,8 @@ section * {
     color: #009e11;
     text-decoration: underline;
 }
+
+p {
+    margin: auto;
+    height: 100%;
+}

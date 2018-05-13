@@ -137,7 +137,7 @@ function displayInfoMember(infos, htmlId)
     nomPrenom.className = "right";
 
     img.id = "photo_membre";
-    img.setAttribute("src", infos["photo"]);
+    img.setAttribute("src", photo_path + infos["photo"]);
     img.setAttribute("onerror", "this.src=" + default_photo);
 
     tel.id = "tel";

@@ -51,7 +51,7 @@ function displayCAMember(ca_length, position, ca_member)
         container = document.getElementById("mandat_right")
     }
 
-    img.setAttribute("src", format("photo", ca_member));
+    img.setAttribute("src", photo_path + format("photo", ca_member));
     img.setAttribute("onerror", "this.src=" + default_photo);
 
     p.innerHTML += format("firstname", ca_member) + " ";

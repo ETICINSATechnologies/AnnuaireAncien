@@ -27,7 +27,7 @@ if (isset($_SESSION['id']) and isset($_FILES[$index])) {
     }
     //Déplacement
     $nom = $_SESSION['id'] . '.' . $ext;
-    $destination = '../front/images/' . $_SESSION['id'] . '.' . $ext;
+    $destination = '../public/image/' . $_SESSION['id'] . '.' . $ext;
     $upload = move_uploaded_file($_FILES[$index]['tmp_name'], $destination);
 
     //Modification dans la base de donnees

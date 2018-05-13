@@ -1,4 +1,5 @@
-var default_photo = "'../../public/image/no_photo.png'";
+var photo_path = "../../public/image/";
+var default_photo = "'" + photo_path + "no_photo.png'";
 
 function getFormValues(form_id)
 {

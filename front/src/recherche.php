@@ -29,10 +29,7 @@
     </div>
 
     <div id="info_area">
-        <p id="p_info">
-            Vous pouvez effectuer une recherche sur l'ensemble des membres, en fonction des différents critères ci-contre. <br>
-            Aucun n'est obligatoire mais la recherche doit s'effectuer sur au moins un de ces critères
-        </p>
+
     </div>
 
 </section>

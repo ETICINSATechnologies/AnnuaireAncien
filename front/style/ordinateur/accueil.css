@@ -22,6 +22,10 @@ section {
     height: 100%;
 }
 
+.member {
+    cursor: pointer;
+}
+
 .mandat p {
     margin: auto;
     vertical-align: top;

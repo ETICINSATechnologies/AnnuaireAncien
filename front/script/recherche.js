@@ -162,7 +162,6 @@ function listen()
             getInfoMember(element.id);
         }
     })
-
 }
 
 $(document).ready(function ()
@@ -171,6 +170,26 @@ $(document).ready(function ()
     {
         if (event.key === "Enter")
             search();
-    })
+    });
+
+    var parameters = window.location.search;
+
+    if (parameters.search("id=") !== -1)
+    {
+        var id = parameters.split("id=")[1];
+        getInfoMember(id);
+    }
+    else
+    {
+        var p_info = document.createElement("p");
+
+        p_info.innerHTML =
+            "Vous pouvez effectuer une recherche sur l'ensemble des membres, en fonction des différents critères ci-contre. " +
+            "<br>" + "Aucun n'est obligatoire mais la recherche doit s'effectuer sur au moins un de ces critères";
+
+        p_info.id = "p_info";
+
+        document.getElementById("info_area").appendChild(p_info);
+    }
 });
 

@@ -1,6 +1,5 @@
 $(document).ready(function ()
 {
-    console.log("hello there");
     $.get(
         '../../services/rechercheCA.php',
         function (response)
@@ -24,6 +23,8 @@ $(document).ready(function ()
                 {
                     position = displayCAMember(ca_length, position, ca_members[i]);
                 }
+                console.log("there");
+                listenCA();
             }
             catch (e)
             {
@@ -58,9 +59,10 @@ function displayCAMember(ca_length, position, ca_member)
     p.innerHTML += format("lastname", ca_member) + "<br>";
     p.innerHTML += format("etic_position", ca_member);
 
-    img.id = "img_member" + position;
-    p.id = "p_member" + position;
-    div.id = "member" + position;
+    img.id = "img_member" + ca_member["id"];
+    p.id = "p_member" + ca_member["id"];
+    div.id = ca_member["id"];
+    div.className = "member";
 
     div.appendChild(img);
     div.appendChild(p);
@@ -73,4 +75,16 @@ function displayCAMember(ca_length, position, ca_member)
     document.getElementById(img.id).clientHeight = div_height - p_height;
 
     return ++position;
+}
+
+function listenCA()
+{
+    console.log("hello");
+    $(".member").on({
+        "mousedown": function (evt)
+        {
+            var element = evt.target.parentNode;
+            window.location = "recherche.php?id=" + element.id;
+        }
+    })
 }

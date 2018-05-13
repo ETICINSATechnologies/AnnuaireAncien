@@ -5,8 +5,8 @@ function update()
     {
         var parameters = getFormValues("#profil_form");
 
-        parameters=lowercase(parameters);
-        document.getElementById("response_area").innerText = "";
+        parameters = lowercase(parameters);
+        document.getElementById("info_area").innerText = "";
 
         if (Object.keys(parameters).length>=8)
         {
@@ -20,15 +20,15 @@ function update()
                     {
                         if(response){
 
-                            document.getElementById("response_area").innerHTML = "<p> Les informations ont bien été sauvegardés!</p>";
+                            document.getElementById("info_area").innerHTML = "<p> Les informations ont bien été sauvegardés!</p>";
                         }
                         else{
-                            document.getElementById("response_area").innerHTML = "<p> Un problème est survenu lors de la sauvegarde de vos informations , veuillez recommencer ultérieurement!</p>";
+                            document.getElementById("info_area").innerHTML = "<p> Un problème est survenu lors de la sauvegarde de vos informations , veuillez recommencer ultérieurement!</p>";
                         }
                     }
                     catch (e)
                     {
-                        document.getElementById("response_area").innerHTML = "<p> Un problème est survenu lors de la sauvegarde de vos informations , veuillez recommencer ultérieurement!</p>";
+                        document.getElementById("info_area").innerHTML = "<p> Un problème est survenu lors de la sauvegarde de vos informations , veuillez recommencer ultérieurement!</p>";
                     }
                 },
                 'text'
@@ -37,7 +37,7 @@ function update()
         }
         else
         {
-            document.getElementById("response_area").innerHTML = "<p> Veuillez compléter tous les champs du formulaire ! </p>";
+            document.getElementById("info_area").innerHTML = "<p> Veuillez compléter tous les champs du formulaire ! </p>";
         }
     });
 }

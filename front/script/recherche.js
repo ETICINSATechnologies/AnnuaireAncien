@@ -4,8 +4,8 @@ function search()
     {
         var parameters = getFormValues("#search_form");
 
-        document.getElementById("response_area").innerText = "";
-        document.getElementById("response_area").style.setProperty("border", "");
+        document.getElementById("info_area").innerText = "";
+        document.getElementById("info_area").style.setProperty("border", "");
 
         if (parameters)
         {

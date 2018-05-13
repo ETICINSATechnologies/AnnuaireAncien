@@ -7,7 +7,7 @@ function connect()
 
         parameters['email']=parameters['email'].toLowerCase();
 
-        document.getElementById("response_area").innerText = "";
+        document.getElementById("info_area").innerText = "";
 
         if (Object.keys(parameters).length===2)
         {
@@ -23,12 +23,12 @@ function connect()
                             document.location.href="profil.php";
                         }
                         else{
-                            document.getElementById("response_area").innerHTML = "<p> Identifiant ou mot de passe invalide !</p>";
+                            document.getElementById("info_area").innerHTML = "<p> Identifiant ou mot de passe invalide !</p>";
                         }
                     }
                     catch (e)
                     {
-                        document.getElementById("response_area").innerHTML = "<p> Identifiant ou mot de passe invalide !</p>";
+                        document.getElementById("info_area").innerHTML = "<p> Identifiant ou mot de passe invalide !</p>";
                     }
                 },
                 'text'
@@ -36,7 +36,7 @@ function connect()
         }
         else
         {
-            document.getElementById("response_area").innerHTML = "<p> Veuillez compléter tous les champs du formulaire ! </p>";
+            document.getElementById("info_area").innerHTML = "<p> Veuillez compléter tous les champs du formulaire ! </p>";
         }
     });
 }

@@ -20,6 +20,7 @@ function getFormValues(form_id)
     return false;
 }
 
+
 function format(name, values)
 {
     var oldString = values[name];

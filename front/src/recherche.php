@@ -24,7 +24,7 @@
 
     </div>
 
-    <div id="info_area">
+    <div id="response_area">
 
     </div>
 </section>

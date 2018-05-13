@@ -43,7 +43,7 @@
     height: 95%;
 }
 
-#info_area {
+#response_area {
     grid-column: 1 / 3;
     grid-row: 2;
 

@@ -6,14 +6,13 @@
     <script src="../script/connexion.js"></script>
 </head>
 
-<body>
 <?php include 'header.php'; ?>
 <?php include 'nav.php'; ?>
 
-
+<section id="area">
     <form id="connect_form">
 
-        <div id="response_area">
+        <div id="info_area">
 
         </div>
 
@@ -25,11 +24,8 @@
             <a href="recup.php"> Mot de passe oublié ?</a>
             <br> <br>
             <input id="connect_input" type="button" value="Se connecter" onclick="connect()">
-
-
-
     </form>
-
+</section>
 
 <?php include 'footer.php'; ?>
 <?php include '../script/config.php'; ?>

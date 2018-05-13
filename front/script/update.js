@@ -3,19 +3,21 @@ function update()
 {
     $(document).ready(function ()
     {
+        var attributs=['firstname','lastname','email','phone','company','mandate_year','department','etic_position'];
         var parameters = getFormValues("#profil_form");
 
-        parameters = lowercase(parameters);
-        document.getElementById("info_area").innerText = "";
 
-        if (Object.keys(parameters).length>=8)
+        document.getElementById("info_area").innerText = "";
+        var bol=checkparam(parameters);
+        parameters = lowercase(parameters,attributs);
+
+        if (bol)
         {
             $.get(
                 '../../services/update.php',
                 parameters,
                 function (response)
                 {
-                    console.log(response);
                     try
                     {
                         if(response){
@@ -23,12 +25,12 @@ function update()
                             document.getElementById("info_area").innerHTML = "<p> Les informations ont bien été sauvegardés!</p>";
                         }
                         else{
-                            document.getElementById("info_area").innerHTML = "<p> Un problème est survenu lors de la sauvegarde de vos informations , veuillez recommencer ultérieurement!</p>";
+                            document.getElementById("info_area").innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde de vos informations , veuillez recommencer ultérieurement!</p>";
                         }
                     }
                     catch (e)
                     {
-                        document.getElementById("info_area").innerHTML = "<p> Un problème est survenu lors de la sauvegarde de vos informations , veuillez recommencer ultérieurement!</p>";
+                        document.getElementById("info_area").innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde de vos informations , veuillez recommencer ultérieurement!</p>";
                     }
                 },
                 'text'
@@ -37,23 +39,42 @@ function update()
         }
         else
         {
-            document.getElementById("info_area").innerHTML = "<p> Veuillez compléter tous les champs du formulaire ! </p>";
+            document.getElementById("info_area").innerHTML = "<p style='color: red'> Veuillez saisir votre nom ,prénom et email ! </p>";
         }
     });
 }
-function lowercase(array){
-    array['firstname']=array['firstname'].toLowerCase();
+function lowercase(array,attributs){
+    for(i=0;i<attributs.length;i++){
+        if(array[attributs[i]]!=null){
+            array[attributs[i]]=array[attributs[i]].toLowerCase();
+        }
+        else{
+            array[attributs[i]]='';
+        }
+
+    }
+    /*array['firstname']=array['firstname'].toLowerCase();
     array['lastname']=array['lastname'].toLowerCase();
     array['email']=array['email'].toLowerCase();
     array['phone']=array['phone'].toLowerCase();
     array['company']=array['company'].toLowerCase();
     array['mandate_year']=array['mandate_year'].toLowerCase();
     array['department']=array['department'].toLowerCase();
-    array['etic_position']=array['etic_position'].toLowerCase();
+    array['etic_position']=array['etic_position'].toLowerCase();*/
     return array;
 }
+function checkparam(array){
+    if(array['firstname']===undefined || array['lastname']===undefined ||  array['email']===undefined ) return false;
+    else return true;
+}
+
+
+
+
+
 /*
 function updateImage()
+
 {
 
    /* var parameters = getFormValues("#fichiers");

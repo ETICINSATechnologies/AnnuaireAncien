@@ -34,7 +34,11 @@ function format(name, values)
     var oldString = values[name];
     var newString = oldString;
 
-    if (oldString === undefined)
+    if (oldString === null)
+    {
+        newString = "";
+    }
+    else if (oldString === undefined)
     {
         newString = "non précisé";
     }

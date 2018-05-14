@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 10 mai 2018 à 18:44
+-- Généré le :  lun. 14 mai 2018 à 22:12
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -37,23 +37,37 @@ CREATE TABLE IF NOT EXISTS `membres` (
   `email` varchar(64) CHARACTER SET utf16 COLLATE utf16_bin DEFAULT NULL,
   `company` varchar(64) CHARACTER SET utf16 COLLATE utf16_bin DEFAULT NULL,
   `etic_position` varchar(64) CHARACTER SET utf16 COLLATE utf16_bin DEFAULT NULL,
-  `mandate_year` int(11) DEFAULT NULL,
+  `mandate_year` varchar(4) DEFAULT NULL,
   `department` varchar(32) CHARACTER SET utf16 COLLATE utf16_bin DEFAULT NULL,
   `photo` varchar(64) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
+  `password` varchar(256) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `membres`
 --
 
-INSERT INTO `membres` (`id`, `firstname`, `lastname`, `phone`, `email`, `company`, `etic_position`, `mandate_year`, `department`, `photo`) VALUES
-(1, 'alexandre', 'lang', '0612356897', 'alex.lang@etic-insa.com', 'google', 'resp dsi', 2018, 'informatique', ''),
-(2, 'eline', 'achard', '0635896457', 'eline.achard@gmail.com', '', 'présidente', 2017, 'gi', ''),
-(3, 'Pauline', 'Geslin', '06 87 58 13 30', '', '', 'Secr?taire G?n?ral', 0, 'GI', ''),
-(4, 'Benrighi', 'Linda', '07 83 24 83 33', '', '', 'Tr?sorier', 0, 'IF', ''),
-(5, 'Luc', 'Cristol', '06 20 74 72 49', '', '', 'Vice-Tr?sorier', 0, 'IF', ''),
-(6, 'Antoine', 'Lambert', '06 49 15 43 41', '', '', 'Ventes', 0, 'GI', '');
+INSERT INTO `membres` (`id`, `firstname`, `lastname`, `phone`, `email`, `company`, `etic_position`, `mandate_year`, `department`, `photo`, `password`) VALUES
+(1, 'alex', 'lang', '0612356897', 'alex.lang@etic-insa.com', 'facebook', 'resp dsi', '2018', 'informatique', '1.jpg', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86'),
+(2, 'eline', 'achard', '0635896457', 'eline.achard@gmail.com', '', 'présidente', '2017', 'gi', '', ''),
+(3, 'pauline', 'geslin', '06 87 58 13 30', '', '', 'secrétaire général', '0', 'gi', '', ''),
+(4, 'benrighi', 'linda', '07 83 24 83 33', '', '', 'trésorier', '0', 'if', '', ''),
+(5, 'luc', 'cristol', '06 20 74 72 49', '', '', 'vice-trésorier', '0', 'IF', '', ''),
+(6, 'antoine', 'lambert', '06 49 15 43 41', '', '', 'ventes', '0', 'gi', '', ''),
+(7, 'marah', 'galy adamn', '06 23 56 98 45', 'mgaly@etic-insa.com', 'facebook', '', '2018', 'if', '', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86'),
+(8, 'marah', 'galy adamn', '06 23 56 98 45', 'mgaly@etic-insa.com', 'facebook', 'dsi', '2018', 'if', '', ''),
+(9, 'marah', 'galy adamn', '06 23 56 98 45', 'mgaly@etic-insa.com', 'facebook', 'dsi', '2018', 'if', '', ''),
+(10, 'marah', 'galy adamn', '06 23 56 98 45', 'mgaly@etic-insa.com', 'facebook', 'dsi', '2018', 'if', '', ''),
+(11, 'marah', 'galy adamn', '06 23 56 98 45', 'mgaly@etic-insa.com', 'facebook', 'dsi', '2018', 'if', '', ''),
+(12, 'marah', 'galy adamn', '06 23 56 98 45', 'mgaly@etic-insa.com', 'facebook', 'dsi', '2018', 'if', '', ''),
+(13, 'marah', 'galy adamn', '06 23 56 98 45', 'mgaly@etic-insa.com', 'facebook', 'dsi', '2018', 'if', '', ''),
+(14, 'marah', 'galy adamn', '06 23 56 98 45', 'mgaly@etic-insa.com', 'facebook', 'dsi', '2018', 'if', '', ''),
+(15, 'marah', 'galy adamn', '06 23 56 98 45', 'mgaly@etic-insa.com', 'facebook', 'dsi', '2018', 'if', '', ''),
+(16, 'marah', 'galy adamn', '06 23 56 98 45', 'mgaly@etic-insa.com', 'facebook', 'dsi', '2018', 'if', '', ''),
+(17, 'marah', 'galy adamn', '06 23 56 98 45', 'mgaly@etic-insa.com', 'facebook', 'dsi', '2018', 'if', '', ''),
+(18, 'marah', 'galy adamn', '06 23 56 98 45', 'mgaly@etic-insa.com', 'facebook', 'dsi', '2018', 'if', '', ''),
+(19, 'marah', 'galy adamn', '06 23 56 98 45', 'mgaly@etic-insa.com', 'facebook', 'dsi', '2018', 'if', '', '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

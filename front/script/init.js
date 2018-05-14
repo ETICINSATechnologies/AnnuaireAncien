@@ -43,11 +43,12 @@ function insertInfos(row)
     document.getElementById('mandate_year').setAttribute('value', format('mandate_year', row));
 
     var img = document.createElement("img");
+    var image = document.getElementById('image');
+
     img.setAttribute("src", photo_path + row["photo"]);
     img.setAttribute("onerror", "this.src=" + default_photo);
+    image.innerHTML = "";
 
-    var image = document.getElementById('image');
-    image.innerHTML = ""; //<img id=logo +  + src=" + photo_path + row['photo'] + " >";
     image.appendChild(img);
 }
 

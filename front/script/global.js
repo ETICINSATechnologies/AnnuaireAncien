@@ -34,7 +34,7 @@ function format(name, values)
     var oldString = values[name];
     var newString = oldString;
 
-    if (oldString === null)
+    if (oldString === "" || oldString === null)
     {
         newString = "";
     }

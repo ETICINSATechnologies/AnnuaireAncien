@@ -8,7 +8,7 @@ $(document).ready(function ()
             {
                 var ca_members = JSON.parse(response);
                 var ca_length = ca_members.length;
-                var middle_position = Math.floor(ca_length/ 2 + 0.5);
+                var middle_position = Math.floor(ca_length / 2 + 0.5);
                 var height_dispo = $("#mandat_left").height();
                 var height_div_left = height_dispo / middle_position;
                 var height_div_right = height_dispo / (ca_length - middle_position);
@@ -23,7 +23,6 @@ $(document).ready(function ()
                 {
                     position = displayCAMember(ca_length, position, ca_members[i]);
                 }
-                console.log("there");
                 listenCA();
             }
             catch (e)
@@ -35,6 +34,26 @@ $(document).ready(function ()
         'text'
     );
 });
+
+function resizeCAMembers()
+{
+    /*var ca_length = ca_members.length;
+    var middle_position = Math.floor(ca_length / 2 + 0.5);
+    var height_dispo = $("#mandat_left").height();
+    var height_div_left = height_dispo / middle_position;
+    var height_div_right = height_dispo / (ca_length - middle_position);
+
+    document.getElementById("mandat_left").style.setProperty(
+        "grid-template-rows", "repeat(" + middle_position + ", " + height_div_left + "px)");
+    document.getElementById("mandat_right").style.setProperty(
+        "grid-template-rows", "repeat(" + (ca_length - middle_position) + ", " + height_div_right + "px");*/
+
+    console.log("hello");
+    $("mandat_left").children().each(function ()
+    {
+        console.log("there");
+    });
+}
 
 function displayCAMember(ca_length, position, ca_member)
 {
@@ -79,14 +98,14 @@ function displayCAMember(ca_length, position, ca_member)
 
 function listenCA()
 {
-    console.log("hello");
     $(".member *").on({
         "mousedown": function (evt)
         {
             var element = evt.target.parentNode;
 
-            console.log(element.id);
             window.location = "recherche.php?id=" + element.id;
         }
     })
 }
+
+window.addEventListener("resize", resizeCAMembers);

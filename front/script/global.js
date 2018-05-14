@@ -14,6 +14,14 @@ function getFormValues(form_id)
             validValues[this.id] = this.value;
         }
     });
+    $(form_id).children(":password").each(function ()
+    {
+        if (this.value !== '')
+        {
+            validRequest = true;
+            validValues[this.id] = this.value;
+        }
+    });
 
     if (validRequest)
         return validValues;

@@ -33,14 +33,14 @@ function init()
 
 function insertInfos(row)
 {
-    document.getElementById('email').setAttribute('value', row['email']);
-    document.getElementById('lastname').setAttribute('value', row['lastname']);
-    document.getElementById('firstname').setAttribute('value', row['firstname']);
-    document.getElementById('phone').setAttribute('value', row['phone']);
-    document.getElementById('department').setAttribute('value', row['department']);
-    document.getElementById('etic_position').setAttribute('value', row['etic_position']);
-    document.getElementById('company').setAttribute('value', row['company']);
-    document.getElementById('mandate_year').setAttribute('value', row['mandate_year']);
+    document.getElementById('email').setAttribute('value', format('email', row));
+    document.getElementById('lastname').setAttribute('value', format('lastname', row));
+    document.getElementById('firstname').setAttribute('value', format('firstname', row));
+    document.getElementById('phone').setAttribute('value', format('phone', row));
+    document.getElementById('department').setAttribute('value', format('department', row));
+    document.getElementById('etic_position').setAttribute('value', format('etic_position', row));
+    document.getElementById('company').setAttribute('value', format('company', row));
+    document.getElementById('mandate_year').setAttribute('value', format('mandate_year', row));
 
     var img = document.createElement("img");
     img.setAttribute("src", photo_path + row["photo"]);

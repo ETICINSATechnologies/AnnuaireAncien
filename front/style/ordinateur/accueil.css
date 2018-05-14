@@ -42,8 +42,10 @@ section {
 
 .mandat img {
     justify-self: center;
+    vertical-align: middle;
+    margin: auto;
 
-    height: 100%;
+    height: 90%;
 }
 
 #div_accueil {

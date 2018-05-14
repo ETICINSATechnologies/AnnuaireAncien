@@ -4,7 +4,10 @@ function search()
     {
         var parameters = getFormValues("#search_form");
 
+        document.getElementById("response_area").innerText = "";
         document.getElementById("info_area").innerText = "";
+
+        document.getElementById("response_area").style.setProperty("border", "");
         document.getElementById("info_area").style.setProperty("border", "");
 
         if (parameters)
@@ -91,7 +94,7 @@ function createTable(attributes, columnsName, rows, htmlId, infoId)
             for (var k = 0; k < attributes.length; k++)
             {
                 cell = document.createElement("td");
-                cellText = document.createTextNode(rows[j][attributes[k]]);
+                cellText = document.createTextNode(format(attributes[k], rows[j]));
                 cell.appendChild(cellText);
                 tr.appendChild(cell);
             }
@@ -102,7 +105,7 @@ function createTable(attributes, columnsName, rows, htmlId, infoId)
         table.appendChild(tbody);
         container.innerHTML = "";
         container.appendChild(table);
-        container.style.setProperty("border", "3px solid black");
+        container.style.setProperty("border", "0.45vh solid black");
     }
     else
     {

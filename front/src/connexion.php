@@ -19,7 +19,7 @@
             <p> <b>Identifiant </b> </p>
             <input type="text" id="email">
             <p> <b>Mot de passe </b> </p>
-            <input type="text" id="password">
+            <input type="password" id="password">
             <br> <br>
             <a href="recup.php"> Mot de passe oublié ?</a>
             <br> <br>

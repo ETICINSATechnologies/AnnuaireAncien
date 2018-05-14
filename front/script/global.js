@@ -30,11 +30,11 @@ function format(name, values)
     {
         newString = "non précisé";
     }
-    else if (name === "lastname" || name === "department")
+    else if (name === "lastname")
     {
         newString = oldString.toUpperCase();
     }
-    else if (name === "firstname")
+    else if (name === "firstname" || name === "company" || name === "department")
     {
         newString = oldString[0].toUpperCase();
         newString += oldString.slice(1).toLowerCase();

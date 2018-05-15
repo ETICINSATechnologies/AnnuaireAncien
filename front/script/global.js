@@ -87,6 +87,11 @@ $("#connexion").click(function ()
     window.location = "connexion.php";
 });
 
+$("#deconnexion").click(function ()
+{
+    window.location = "accueil.php";
+});
+
 $("#profil").click(function ()
 {
     window.location = "profil.php";

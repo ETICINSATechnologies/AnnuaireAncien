@@ -8,21 +8,15 @@ $(document).ready(function ()
             {
                 var ca_members = JSON.parse(response);
                 var ca_length = ca_members.length;
-                var middle_position = Math.floor(ca_length / 2 + 0.5);
-                var height_dispo = $("#mandat_left").height();
-                var height_div_left = height_dispo / middle_position;
-                var height_div_right = height_dispo / (ca_length - middle_position);
                 var position = 1;
-
-                document.getElementById("mandat_left").style.setProperty(
-                    "grid-template-rows", "repeat(" + middle_position + ", " + height_div_left + "px)");
-                document.getElementById("mandat_right").style.setProperty(
-                    "grid-template-rows", "repeat(" + (ca_length - middle_position) + ", " + height_div_right + "px");
 
                 for (var i in ca_members)
                 {
                     position = displayCAMember(ca_length, position, ca_members[i]);
                 }
+
+                resizeCAMembers("mandat_left");
+                resizeCAMembers("mandat_right");
                 listenCA();
             }
             catch (e)
@@ -35,25 +29,18 @@ $(document).ready(function ()
     );
 });
 
-function resizeCAMembers()
+function resizeCAMembers(mandatName)
 {
-    /*var ca_length = ca_members.length;
-    var middle_position = Math.floor(ca_length / 2 + 0.5);
-    var height_dispo = $("#mandat_left").height();
-    var height_div_left = height_dispo / middle_position;
-    var height_div_right = height_dispo / (ca_length - middle_position);
+    var mandat = document.getElementById(mandatName);
 
-    document.getElementById("mandat_left").style.setProperty(
-        "grid-template-rows", "repeat(" + middle_position + ", " + height_div_left + "px)");
-    document.getElementById("mandat_right").style.setProperty(
-        "grid-template-rows", "repeat(" + (ca_length - middle_position) + ", " + height_div_right + "px");*/
+    var CANumber = mandat.children.length;
+    var heightDispo = 0.95 * mandat.clientHeight;
+    var heightDiv = heightDispo / CANumber;
+    console.log(heightDispo);
 
-    console.log("hello");
-    $("mandat_left").children().each(function ()
-    {
-        console.log("there");
-    });
+    mandat.style.setProperty("grid-template-rows", "repeat(" + CANumber + ", " + heightDiv + "px)");
 }
+
 
 function displayCAMember(ca_length, position, ca_member)
 {
@@ -63,13 +50,9 @@ function displayCAMember(ca_length, position, ca_member)
     var p = document.createElement("p");
 
     if (position > ca_length / 2)
-    {
         container = document.getElementById("mandat_left");
-    }
     else
-    {
-        container = document.getElementById("mandat_right")
-    }
+        container = document.getElementById("mandat_right");
 
     img.setAttribute("src", photo_path + format("photo", ca_member));
     img.setAttribute("onerror", "this.src=" + default_photo);
@@ -108,4 +91,8 @@ function listenCA()
     })
 }
 
-window.addEventListener("resize", resizeCAMembers);
+window.addEventListener("resize", function (ev)
+{
+    resizeCAMembers("mandat_left");
+    resizeCAMembers("mandat_right");
+});

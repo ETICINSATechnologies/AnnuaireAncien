@@ -3,8 +3,6 @@
 <head>
     <?php include 'head.php' ?>
     <link rel="stylesheet" href="../style/ordinateur/profil.css">
-    <script src="../script/update.js"></script>
-    <script src="../script/init.js"></script>
 </head>
 
 <body onload="init()">
@@ -54,20 +52,15 @@
         <div id="button" class="right">
             <input id="connect_input" type="button" value="Sauvegarder" onclick="update()">
         </div>
-
     </form>
 
     <div id="fenetre">
         <form id="image_form" method="post" action="../../services/updatePicture.php" enctype="multipart/form-data">
-
             <div id="image2"> </div>
             <input type="file" name="icone" id="icone" /><br/>
             <input id="precedent" type="button" value="précedent">
             <input id="savefile" type="submit" name="submit" value="suivant"/>
-
-
         </form>
-
     </div>
 </section>
 <script>
@@ -83,5 +76,7 @@
 
 <?php include 'footer.php'; ?>
 <?php include '../script/config.php'; ?>
+<script src="../script/update.js"></script>
+<script src="../script/init.js"></script>
 </body>
 </html>

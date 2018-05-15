@@ -1,5 +1,85 @@
+#area {
+    display: grid;
+}
+
+#connect_form {
+    display: grid;
+    grid-template-rows: 1fr repeat(5, 6.2vmin) 10fr;
+
+    background-color: #b6d7a8;
+
+    justify-self: center;
+    vertical-align: middle;
+    margin: auto;
+    padding: 1%;
+
+    border: 0.45vmin solid black;
+
+    width: 40vmin;
+    height: 50vmin;
+}
+
+#connect_form * {
+
+}
+
+#connect_form div {
+    color: red;
+    text-align: center;
+    margin: auto;
+    font-size: 2.4vmin;
+    width: 90%;
+    height: 90%;
+}
+
+#connect_form p {
+    margin: auto auto 0 auto;
+    font-size: 3.8vmin;
+    width: 95%;
+    height: 4vmin;
+}
+
+#connect_form a {
+    text-align: center;
+    justify-self: center;
+    margin: auto;
+
+    text-decoration: none;
+    color: #009e19;
+
+    font-size: 3vmin;
+}
+
+#connect_form a:hover {
+    text-decoration: underline;
+}
+
+#connect_form input[type="text"], input[type="password"] {
+    margin: auto;
+    font-size: 3vmin;
+    height: 4vmin;
+    width: 95%;
+}
+
+#connect_input {
+    cursor: pointer;
+    color: white;
+    background: #009e0f;
+    border: 0.3vmin solid black;
+
+    margin: auto;
+    font-size: 3.5vmin;
+    width: 60%;
+    height: 6vmin;
+}
+
+#connect_input:hover {
+    opacity: 0.8;
+}
+
+/*
 #connect_form{
-    background-color: #B6D7A8;
+    background-color: #b6d7a8;
     border: 3px black solid;
     position:absolute;
     left: 50%;
@@ -12,4 +92,4 @@
 }
 #info_area{
     color: red;
-}
+}*/

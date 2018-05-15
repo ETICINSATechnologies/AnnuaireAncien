@@ -1,4 +1,4 @@
-#profil {
+#deconnexion {
     display: grid;
 }
 
@@ -17,13 +17,11 @@
 }
 
 #info_area {
-    display: grid;/*
+    display: grid;
     grid-column: 1;
-    grid-row: 1 / 5;*/
+    grid-row: 1 / 5;
 
     margin: auto;
-    animation-name: display;
-    animation-delay: 2s;
 
     width: 40%;
     height: 100%;
@@ -33,21 +31,34 @@
     text-align: center;
     justify-self: center;
     vertical-align: middle;
-    margin: auto;
 
-    animation-name: display;
-    animation-delay: 2s;
+    animation-name: displaySave;
+    animation-duration: 2s;
 
     color: #009e11;
-    font-size: 1.8vw;
+    background-color: white;
 
-    height: 100%;
+    margin: auto;
+    padding-top: 40%;
+    font-size: 4vmin;
+
+    height: 60%;
+}
+
+@keyframes displaySave {
+    0% {z-index:0}
+    10% {z-index: 2}
+    90% {z-index: 2}
+    100% {z-index:0}
 }
 
 #profil_form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(10, 1fr) 8vh;
+    grid-template-rows: repeat(10, 1fr) 8vmin;
+
+    z-index:1;
+    background-color: white;
 
     justify-self: center;
     vertical-align: middle;
@@ -55,7 +66,7 @@
     margin: auto;
 
     width: 60%;
-    height: 68vh;
+    height: 68vmin;
 }
 
 #profil_form * {
@@ -64,12 +75,12 @@
 
 #profil_form input[type="text"] {
     border: 2px solid black;
-    font-size: 3vh;
-    padding-left: 1vh;
-    height: 5vh;
+    font-size: 3vmin;
+    padding-left: 1vmin;
+    height: 5vmin;
 }
 
-#profil_form p, input[type="text"]{
+#profil_form p, input[type="text"] {
     justify-self: center;
 }
 
@@ -82,10 +93,10 @@
 }
 
 .p_info {
-    font-size: 3.7vh;
+    font-size: 3.7vmin;
     margin: auto auto 0 auto;
 
-    height: 4.7vh;
+    height: 4.7vmin;
 }
 
 #image {
@@ -94,16 +105,24 @@
     grid-row: 1 / 5;
 
     margin: auto auto 0 auto;
-}
+    background-color: white;
+    z-index:1;
 
-#image {
-    width: 22vh;
-    height: 22vh;
+    cursor: pointer;
+    width: 100%;
+    height: 22vmin;
 }
 
 #image img {
-    width: 100%;
-    height: 100%;
+    justify-self: center;
+    vertical-align: middle;
+    margin: auto;
+    width: 22vmin;
+    height: 22vmin;
+}
+
+img {
+    cursor: pointer;
 }
 
 #logo {
@@ -136,11 +155,17 @@
     height: 60%;
     width: 15vw;
 }
-#fenetre{
+
+#connect_input:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#fenetre {
     display: none;
-    background-color: #B6D7A8;
+    background-color: #b6d7a8;
     border: 3px black solid;
-    position:absolute;
+    position: absolute;
     left: 50%;
     top: 60%;
     width: 400px;

@@ -1,15 +1,13 @@
-
 function update()
 {
     $(document).ready(function ()
     {
-        var attributs=['firstname','lastname','email','phone','company','mandate_year','department','etic_position'];
+        var attributs = ['firstname', 'lastname', 'email', 'phone', 'company', 'mandate_year', 'department', 'etic_position'];
         var parameters = getFormValues("#profil_form");
-
-
-        document.getElementById("info_area").innerText = "";
-        var bol=checkparam(parameters);
-        parameters = lowercase(parameters,attributs);
+        var info_area = document.getElementById("info_area");
+        var bol = checkparam(parameters);
+        info_area.innerText = "";
+        parameters = lowercase(parameters, attributs);
 
         if (bol)
         {
@@ -18,19 +16,24 @@ function update()
                 parameters,
                 function (response)
                 {
+                    info_area.style.setProperty("color", "red");
                     try
                     {
-                        if(response){
+                        if (response)
+                        {
 
-                            document.getElementById("info_area").innerHTML = "<p> Les informations ont bien été sauvegardés!</p>";
+                            info_area.innerHTML = "<p> Les informations ont bien été sauvegardées!</p>";
+                            info_area.style.setProperty("color", "#009e11");
+                            init();
                         }
-                        else{
-                            document.getElementById("info_area").innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde de vos informations , veuillez recommencer ultérieurement!</p>";
+                        else
+                        {
+                            info_area.innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde de vos informations, veuillez recommencer ultérieurement!</p>";
                         }
                     }
                     catch (e)
                     {
-                        document.getElementById("info_area").innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde de vos informations , veuillez recommencer ultérieurement!</p>";
+                        info_area.innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde de vos informations, veuillez recommencer ultérieurement!</p>";
                     }
                 },
                 'text'
@@ -39,17 +42,22 @@ function update()
         }
         else
         {
-            document.getElementById("info_area").innerHTML = "<p style='color: red'> Veuillez saisir votre nom ,prénom et email ! </p>";
+            document.getElementById("info_area").innerHTML = "<p style='color: red'> Veuillez saisir votre nom, prénom et email ! </p>";
         }
     });
 }
-function lowercase(array,attributs){
-    for(i=0;i<attributs.length;i++){
-        if(array[attributs[i]]!=null){
-            array[attributs[i]]=array[attributs[i]].toLowerCase();
+
+function lowercase(array, attributs)
+{
+    for (i = 0; i < attributs.length; i++)
+    {
+        if (array[attributs[i]] != null)
+        {
+            array[attributs[i]] = array[attributs[i]].toLowerCase();
         }
-        else{
-            array[attributs[i]]='';
+        else
+        {
+            array[attributs[i]] = '';
         }
 
     }
@@ -63,13 +71,22 @@ function lowercase(array,attributs){
     array['etic_position']=array['etic_position'].toLowerCase();*/
     return array;
 }
-function checkparam(array){
-    if(array['firstname']===undefined || array['lastname']===undefined ||  array['email']===undefined ) return false;
+
+function checkparam(array)
+{
+    if (array['firstname'] === undefined || array['lastname'] === undefined || array['email'] === undefined) return false;
     else return true;
 }
 
 
-
+$(document).ready(function ()
+{
+    $("#profil_form").keypress(function (event)
+    {
+        if (event.key === "Enter")
+            update();
+    });
+});
 
 
 /*

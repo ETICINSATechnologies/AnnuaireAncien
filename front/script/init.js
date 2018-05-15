@@ -6,13 +6,11 @@ function init()
             '../../services/init.php',
             function (response)
             {
-                console.log(response);
                 try
                 {
                     if (response)
                     {
                         var row = JSON.parse(response);
-
                         insertInfos(row);
                     }
                     else
@@ -51,4 +49,3 @@ function insertInfos(row)
 
     image.appendChild(img);
 }
-

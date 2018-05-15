@@ -1,15 +1,15 @@
 #search_section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 42vh 35vh;
+    grid-template-rows: 42vmin 35vmin;
     grid-gap: 2%;
 
     justify-self: center;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
 
     margin: auto;
 
-    height: 78vh;
+    height: 78vmin;
     width: 95%;
 }
 
@@ -20,8 +20,8 @@
 
     margin: auto;
 
-    border: 0.45vh solid black;
-    border-radius: 4vw;
+    border: 0.45vmin solid black;
+    border-radius: 2vw;
     padding: 1%;
 
     width: 90%;
@@ -103,28 +103,28 @@
 @media (orientation: landscape)
 {
     #info {
-        width: 54vh;
+        width: 54vmin;
     }
 
     #info {
-        grid-gap: 1vh;
+        grid-gap: 1vmin;
     }
 
     #nom_prenom {
-        font-size: 3.65vh;
+        font-size: 3.65vmin;
     }
 
     #tel {
-        font-size: 3.4vh;
+        font-size: 3.4vmin;
     }
 
     #coordonnes {
-        font-size: 3.4vh;
+        font-size: 3.4vmin;
     }
 
     #photo_membre {
-        width: 15vh;
-        height: 15vh;
+        width: 15vmin;
+        height: 15vmin;
     }
 }
 
@@ -163,7 +163,7 @@
 
 #info {
     display: grid;
-    grid-template-columns: 20vh 1fr;
+    grid-template-columns: 20vmin 1fr;
 
     background-color: white;
 
@@ -171,7 +171,7 @@
     vertical-align: middle;
     text-align: center;
 
-    border: 0.6vh solid black;
+    border: 0.6vmin solid black;
 
     padding: 1vw;
 
@@ -222,12 +222,12 @@ tbody {
     overflow-y: auto;
     overflow-x: hidden;
 
-    height: 26.1vh;
+    height: 26.1vmin;
 }
 
 td, th {
-    border-bottom: 0.2vh solid black;
-    border-left: 0.2vh solid black;
+    border-bottom: 0.2vmin solid black;
+    border-left: 0.2vmin solid black;
 
     font-size: 1.5vw;
     padding: 0 0.5vw;
@@ -242,7 +242,7 @@ td {
 tr {
     background-color: white;
 
-    height: 5vh;
+    height: 5vmin;
 }
 
 tr:nth-child(even) {

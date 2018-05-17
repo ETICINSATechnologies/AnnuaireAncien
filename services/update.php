@@ -5,7 +5,6 @@ session_start();
 $validAttributes = array('firstname', 'lastname', 'phone', 'email', 'password', 'company', 'etic_position', 'mandate_year', 'department');
 
 $method = $_GET;
-
 $parametersNb = sizeof($method);
 $attributes = array_keys($method);
 $values = array_values($method);
@@ -26,18 +25,6 @@ if (validateRequest($validAttributes, $attributes) && isset($_SESSION['id']))
             }
         }
         $sql .='VALUES(';
-        for ($i = 0; $i < $parametersNb; $i++)
-        {
-            if($i==$parametersNb-1){
-                $sql .='?' .')';
-            }
-            else{
-                $sql .='?' .',';
-            }
-
-        }
-
-        echo $sql;
         $stmt = $bdd->prepare($sql);
         for ($i = 1; $i <= $parametersNb; $i++)
         {

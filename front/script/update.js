@@ -5,7 +5,10 @@ function update()
         var attributs = ['firstname', 'lastname', 'email', 'phone', 'company', 'mandate_year', 'department', 'etic_position'];
         var parameters = getFormValues("#profil_form");
         var info_area = document.getElementById("info_area");
+        var img = document.getElementById("image");
         var bol = checkparam(parameters);
+
+        img.style.setProperty("animation-name", "");
         info_area.innerText = "";
         parameters = lowercase(parameters, attributs);
 
@@ -17,6 +20,7 @@ function update()
                 function (response)
                 {
                     info_area.style.setProperty("color", "red");
+                    img.style.setProperty("animation-name", "hideImg");
                     try
                     {
                         if (response)
@@ -38,7 +42,6 @@ function update()
                 },
                 'text'
             );
-
         }
         else
         {
@@ -88,52 +91,89 @@ $(document).ready(function ()
     });
 });
 
-
-/*
-function updateImage()
-
+function checkPassword(old_password)
 {
+    var password_info = document.getElementById("password_info");
 
-   /* var parameters = getFormValues("#fichiers");
     $.get(
-        '../../services/updatePicture.php',
-        parameters,
+        '../../services/update.php',
+        {"password" : old_password},
         function (response)
         {
             try
             {
-                if(response){
-
-                    console.log(response);
-
+                if (response)
+                {
+                    init();
+                }
+                else
+                {
+                    password_info.innerHTML = "<p> Mot de passe incorrect </p>";
                 }
             }
             catch (e)
             {
-                document.getElementById("info_area").innerHTML = "<p id='p_info'> La recherche que vous avez effectuée " +
-                    "n'a donné aucun résultats. <br>" + "Assurez-vous d'avoir correctement saisi les informations </p>";
+                password_info.innerHTML = "<p> Une erreur est survenue </p>";
             }
         },
         'text'
     );
-    $("#save_file").click(function(){
+}
 
-        $.ajax({
-            url : '../../services/updatePicture.php', // La ressource ciblée
-            type : 'GET', // Le type de la requête HTTP
+function changePassword(new_password)
+{
+    var info_area = document.getElementById("info_area");
+    var img = document.getElementById("image");
 
-            dataType : 'json', // Le type de données à recevoir, ici, du HTML.
-            success : function(data){ // code_html contient le HTML renvoyé
+    info_area.style.setProperty("color", "red");
+    img.style.setProperty("animation-name", "hideImg");
 
-                    var titi=JSON.parse(data);
-                    console.log("TOUT MARHCE");
-                    console.log(titi);
-
+    $.get(
+        '../../services/update.php',
+        {"password" : new_password},
+        function (response)
+        {
+            try
+            {
+                if (response)
+                {
+                    info_area.innerHTML = "<p> Les informations ont bien été sauvegardées!</p>";
+                    info_area.style.setProperty("color", "#009e11");
+                    init();
+                }
+                else
+                {
+                    info_area.innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde de vos informations, veuillez recommencer ultérieurement!</p>";
+                }
             }
-        });
+            catch (e)
+            {
+                info_area.innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde de vos informations, veuillez recommencer ultérieurement!</p>";
+            }
+        },
+        'text'
+    );
+}
 
-    });
 
+function updatePassword()
+{
+    var parameters = getFormValues("#password_form");
+    var password_info = document.getElementById("password_info");
 
-}*/
-
+    if (Object.keys(parameters).length !== 3)
+    {
+        password_info.innerHTML = "<p> Compléter tous les champs </p>"
+    }
+    else if (parameters["new_password"] === parameters["confirmed_new_password"])
+    {
+        checkPassword(parameters["old_password"]);
+        changePassword(parameters["new_password"]);
+        document.getElementById('password_window').style.display = 'none';
+        document.getElementById('form_area').style.setProperty("opacity", "");
+    }
+    else
+    {
+        password_info.innerHTML = "<p> Mots de passes différents ! </p>"
+    }
+}

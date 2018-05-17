@@ -7,7 +7,7 @@ function connect()
 
         document.getElementById("info_area").innerText = "";
 
-        if (Object.keys(parameters).length===2)
+        if (Object.keys(parameters).length === 2)
         {
             parameters['email']=parameters['email'].toLowerCase();
 

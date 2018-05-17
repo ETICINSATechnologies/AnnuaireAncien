@@ -10,10 +10,18 @@
     height: 0;
 }
 
-#form_area {
+section {
     display: grid;
     grid-row: 3;
     grid-column: 1;
+    justify-self: center;
+    vertical-align: middle;
+    margin: auto;
+}
+
+#form_area {
+    width: 100%;
+    height: 100%;
 }
 
 #info_area {
@@ -21,7 +29,9 @@
     grid-column: 1;
     grid-row: 1 / 5;
 
+    z-index:1;
     margin: auto;
+    background-color: white;
 
     width: 40%;
     height: 100%;
@@ -32,24 +42,11 @@
     justify-self: center;
     vertical-align: middle;
 
-    animation-name: displaySave;
-    animation-duration: 2s;
-
+    z-index:1;
     color: #009e11;
-    background-color: white;
 
     margin: auto;
-    padding-top: 40%;
     font-size: 4vmin;
-
-    height: 60%;
-}
-
-@keyframes displaySave {
-    0% {z-index:0}
-    10% {z-index: 2}
-    90% {z-index: 2}
-    100% {z-index:0}
 }
 
 #profil_form {
@@ -57,7 +54,6 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(10, 1fr) 8vmin;
 
-    z-index:1;
     background-color: white;
 
     justify-self: center;
@@ -106,9 +102,10 @@
 
     margin: auto auto 0 auto;
     background-color: white;
-    z-index:1;
+    z-index: 2;
 
-    cursor: pointer;
+    animation-duration: 2s;
+
     width: 100%;
     height: 22vmin;
 }
@@ -119,6 +116,13 @@
     margin: auto;
     width: 22vmin;
     height: 22vmin;
+}
+
+@keyframes hideImg {
+    0% {z-index: 2;}
+    10% {z-index: 0;}
+    90% {z-index: 0;}
+    100% {z-index:2;}
 }
 
 img {
@@ -134,45 +138,153 @@ img {
     height: 100%;
 }
 
-#button {
+.div_button {
     display: grid;
-    justify-self: right;
+    justify-self: center;
 }
 
-#connect_input {
+.input_button {
     cursor: pointer;
     text-align: center;
     vertical-align: middle;
-
-    color: white;
-    background-color: #009e0f;
 
     margin: auto;
 
     font-size: 1.7vw;
     border: 3px solid black;
 
-    height: 60%;
-    width: 15vw;
+    height: 70%;
 }
 
-#connect_input:hover {
+#update_input {
+    color: white;
+    background-color: #009e0f;
+}
+
+#password_input {
+    color: black;
+    background: #dddddd;
+}
+
+.input_button:hover {
     cursor: pointer;
     opacity: 0.8;
 }
 
-#fenetre {
-    display: none;
+.window {
+    z-index: 3;
+    border: 0.6vmin solid black;
     background-color: #b6d7a8;
-    border: 3px black solid;
-    position: absolute;
-    left: 50%;
-    top: 60%;
-    width: 400px;
-    height: 450px;
-    margin-left: -225px;
-    margin-top: -225px;
 
-    text-align: center;
+    padding: 2vmin;
+    width: 40vmin;
 }
 
+#image_window {
+    display: none;
+    height: 20vmin;
+}
+
+#image_form {
+    display: grid;;
+    grid-template-rows: 1fr 10vmin 7vmin;
+    height: 100%;
+}
+
+#image2{
+    height: 0;
+}
+
+#icone {
+    text-align: center;
+    justify-self: center;
+    vertical-align: middle;
+    margin: auto;
+
+    font-size: 2vmin;
+    width: 90%;
+}
+
+#input_image_div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#input_image_div input{
+    justify-self: center;
+    vertical-align: middle;
+    margin: auto;
+
+    font-size: 3.5vmin;
+    width: 90%;
+    height: 80%;
+}
+
+#password_window {
+    display: none;
+}
+
+#password_form {
+    display: grid;
+    grid-template-rows: 1fr repeat(6, 6vmin) 6vmin 7vmin;
+}
+
+#password_form * {
+    justify-self: center;
+    vertical-align: middle;
+    margin: auto;
+    width: 90%;
+    height: 90%;
+}
+
+#password_form p {
+    vertical-align: bottom;
+    margin: auto auto 0 auto;
+    font-size: 3vmin;
+    height: 3.5vmin;
+}
+
+#password_form a {
+    text-align: center;
+    vertical-align: middle;
+    justify-self: center;
+    margin: auto;
+    font-size: 3vmin;
+    height: 3.5vmin
+}
+
+#password_form input {
+    font-size: 3vmin;
+}
+
+#password_info {
+    color: red;
+}
+
+#input_div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#input_div input {
+    height: 5.5vmin;
+}
+
+.cancel_input {
+    color: white;
+    background-color: red;
+    border: 0.2vmin solid black;
+}
+
+.validate_input {
+    color: white;
+    background: green;
+    border: 0.2vmin solid black;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover{
+    cursor: pointer;
+    opacity: 0.8;
+    border: 0.4vmin solid black;
+}

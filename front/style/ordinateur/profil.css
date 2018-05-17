@@ -249,8 +249,14 @@ img {
     vertical-align: middle;
     justify-self: center;
     margin: auto;
+    text-decoration: none;
+    color: #009e0f;
     font-size: 3vmin;
     height: 3.5vmin
+}
+
+#password_form a:hover {
+    text-decoration: underline;
 }
 
 #password_form input {

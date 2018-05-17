@@ -16,11 +16,9 @@ function connect()
                 parameters,
                 function (response)
                 {
-                    console.log(response);
                     try
                     {
                         if(response){
-                            console.log(response);
                             if(response==='admin'){
                                 document.location.href="ajout.php";
                             }

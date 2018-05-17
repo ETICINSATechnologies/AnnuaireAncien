@@ -3,7 +3,7 @@ $servername = "localhost";
 $dbname = "annuaire_ancien";
 $dsn = 'mysql:host=' . $servername . ';dbname=' . $dbname . ';charset=utf8';
 $username = "root";
-$password = "";
+$password = "root";
 
 try
 {

@@ -11,33 +11,77 @@ $values = array_values($method);
 
 if (validateRequest($validAttributes, $attributes) && isset($_SESSION['id']))
 {
-    if($_SESSION['admin']=="true"){
-        echo "ici";
-        $sql = 'INSERT INTO membres';
-        $sql .='(';
+//    if ($_SESSION['admin'] == false)
+    if (true)
+    {
+        $sql = "INSERT INTO  membres (";
+        $values_insert = " VALUES (";
+
         for ($i = 0; $i < $parametersNb; $i++)
         {
-            if($i==$parametersNb-1){
-                $sql .=$attributes[$i] .')';
+            if ($i == $parametersNb - 1)
+            {
+                $sql .= $attributes[$i];
+                $sql .= ')';
+                $values_insert .= ':value' . $i;
+                $values_insert .= ")";
             }
-            else{
-                $sql .=$attributes[$i] .',';
+            else
+            {
+                $sql .= $attributes[$i];
+                $sql .= ', ';
+                $values_insert .= ':value' . $i;
+                $values_insert .= ", ";
             }
         }
-        $sql .='VALUES(';
+
+        $sql .= $values_insert;
+
+        $stmt = $bdd->prepare($sql);
+
+        for ($i = 0; $i < $parametersNb; $i++)
+        {
+            $stmt->bindParam(':value' . $i, $values[$i]);
+        }
+        $data = $stmt->execute();
+
+        if (!$stmt)
+        {
+            die ('error because ' . print_r($bdd->errorInfo(), true));
+        }
+        else
+        {
+            echo $stmt->fetch();
+        }
+
+        /*echo "ici";
+        $sql = 'INSERT INTO membres (';
+        for ($i = 0; $i < $parametersNb; $i++)
+        {
+            if ($i == $parametersNb - 1)
+            {
+                $sql .= $attributes[$i] . ')';
+            }
+            else
+            {
+                $sql .= $attributes[$i] . ',';
+            }
+        }
+        $sql .= 'VALUES(';
         $stmt = $bdd->prepare($sql);
         for ($i = 1; $i <= $parametersNb; $i++)
         {
-            $stmt->bindParam( $i, $values[$i-1]);
+            $stmt->bindParam($i, $values[$i - 1]);
         }
         $data = $stmt->execute();
-        echo $data;
+        echo $data;*/
 
 
     }
-    else{
+    else
+    {
 
-        $sql = 'UPDATE membres';
+        $sql = "UPDATE membres";
 
         for ($i = 0; $i < $parametersNb; $i++)
         {
@@ -76,9 +120,6 @@ if (validateRequest($validAttributes, $attributes) && isset($_SESSION['id']))
             echo $data;
         }
     }
-
-
-
 
 
 }

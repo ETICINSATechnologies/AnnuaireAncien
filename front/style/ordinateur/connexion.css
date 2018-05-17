@@ -61,7 +61,7 @@
     width: 95%;
 }
 
-#connect_input {
+#update_input {
     cursor: pointer;
     color: white;
     background: #009e0f;
@@ -73,7 +73,7 @@
     height: 6vmin;
 }
 
-#connect_input:hover {
+#update_input:hover {
     opacity: 0.8;
 }
 

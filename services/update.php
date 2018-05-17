@@ -5,7 +5,6 @@ session_start();
 $validAttributes = array('firstname', 'lastname', 'phone', 'email', 'password', 'company', 'etic_position', 'mandate_year', 'department');
 
 $method = $_GET;
-
 $parametersNb = sizeof($method);
 $attributes = array_keys($method);
 $values = array_values($method);
@@ -25,6 +24,11 @@ if (validateRequest($validAttributes, $attributes) && isset($_SESSION['id']))
         {
             $sql .= ',';
             $sql .= $attributes[$i] . ' = ' . ':value' . $i;
+        }
+
+        if ($attributes[$i] === "password")
+        {
+            $values[$i] = hash('sha512', $values[$i]);
         }
     }
 

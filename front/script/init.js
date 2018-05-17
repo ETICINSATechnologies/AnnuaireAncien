@@ -43,6 +43,7 @@ function insertInfos(row)
     var img = document.createElement("img");
     var image = document.getElementById('image');
 
+    img.id = "photo";
     img.setAttribute("src", photo_path + row["photo"]);
     img.setAttribute("onerror", "this.src=" + default_photo);
     image.innerHTML = "";

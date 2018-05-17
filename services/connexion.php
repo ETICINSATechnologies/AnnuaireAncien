@@ -13,18 +13,18 @@ $values[1] = hash('sha512', $values[1]);
 
 if (validateRequest($validAttributes, $attributes))
 {
-    $sql = 'SELECT id FROM membres ';
+    $sql_1 = 'SELECT id FROM membres ';
 
     for ($i = 0; $i < $parametersNb; $i++)
     {
         if ($i == 0)
-            $sql .= ' WHERE ';
+            $sql_1 .= ' WHERE ';
         else
-            $sql .= ' AND ';
-        $sql .= $attributes[$i] . ' = ' . ':value' . $i;
+            $sql_1 .= ' AND ';
+        $sql_1 .= $attributes[$i] . ' = ' . ':value' . $i;
     }
 
-    $stmt = $bdd->prepare($sql);
+    $stmt = $bdd->prepare($sql_1);
 
     for ($i = 0; $i < $parametersNb; $i++)
     {
@@ -36,15 +36,48 @@ if (validateRequest($validAttributes, $attributes))
     if (!$stmt)
     {
         die ('error because ' . print_r($bdd->errorInfo(), true));
+
     }
+
     else
     {
+
         $data = $stmt->fetch();
         if(isset($data['id'])){
+
+
             session_start ();
             $_SESSION['id'] =$data['id'];
+            $_SESSION['admin']=="false";
+            $sql_2 = 'SELECT id FROM admin ';
+            $sql_2 .= ' WHERE ';
+            $sql_2 .= 'id' . ' = ' . $_SESSION['id'];
+            $stmt = $bdd->prepare($sql_2);
+
+            $stmt->execute();
+            if (!$stmt)
+            {
+                die ('error because ' . print_r($bdd->errorInfo(), true));
+            }
+            else
+            {
+                $admin = $stmt->fetch();
+
+                if($admin['id']==$_SESSION['id']){
+                    $_SESSION['admin'] ="true";
+                    $response= 'admin';
+                }
+                else{
+                    $response='membre';
+                }
+
+            }
+
+            echo  $response ;
+
+
         }
-        echo $data['id'];
+
     }
 }
 

@@ -20,7 +20,14 @@ function connect()
                     try
                     {
                         if(response){
-                            document.location.href="profil.php";
+                            console.log(response);
+                            if(response==='admin'){
+                                document.location.href="ajout.php";
+                            }
+                            else{
+                                document.location.href="profil.php";
+                            }
+
                         }
                         else{
                             document.getElementById("info_area").innerHTML = "Identifiant ou mot de passe invalide !";

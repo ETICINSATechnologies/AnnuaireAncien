@@ -67,7 +67,7 @@
     {
         document.getElementById('password_window').style.display = 'none';
         document.getElementById('form_area').style.setProperty("opacity", "");
-    });*
+    });
     document.getElementById('update_input').addEventListener('click', update);
 </script>
 </body>

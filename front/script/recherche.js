@@ -3,6 +3,7 @@ function search()
     $(document).ready(function ()
     {
         var parameters = getFormValues("#search_form");
+        console.log(parameters);
 
         document.getElementById("response_area").innerText = "";
         document.getElementById("info_area").innerText = "";

@@ -1,5 +1,6 @@
 <?php
 include 'connectDB.php';
+include 'sendEmail.php';
 session_start();
 
 $validAttributes = array('firstname', 'lastname', 'phone', 'email', 'password', 'company', 'etic_position', 'mandate_year', 'department');
@@ -11,11 +12,18 @@ $values = array_values($method);
 
 if (validateRequest($validAttributes, $attributes) && isset($_SESSION['id']))
 {
-//    if ($_SESSION['admin'] == false)
-    if (true)
+    if ($_SESSION['admin'])
     {
-        $sql = "INSERT INTO  membres (";
-        $values_insert = " VALUES (";
+        $sql = 'INSERT INTO  membres (';
+        $member_values = " VALUES (";
+
+        if (!in_array("password", $attributes))
+        {
+            $attributes[] = "password";
+            $password = randomPassword(16);
+            $values[] = hash('sha512', $password);
+            $parametersNb++;
+        }
 
         for ($i = 0; $i < $parametersNb; $i++)
         {
@@ -23,65 +31,30 @@ if (validateRequest($validAttributes, $attributes) && isset($_SESSION['id']))
             {
                 $sql .= $attributes[$i];
                 $sql .= ')';
-                $values_insert .= ':value' . $i;
-                $values_insert .= ")";
+                $member_values .= ':value' . $i;
+                $member_values .= ")";
             }
             else
             {
                 $sql .= $attributes[$i];
                 $sql .= ', ';
-                $values_insert .= ':value' . $i;
-                $values_insert .= ", ";
+                $member_values .= ':value' . $i;
+                $member_values .= ", ";
             }
         }
 
-        $sql .= $values_insert;
+        $sql .= $member_values;
 
-        $stmt = $bdd->prepare($sql);
-
-        for ($i = 0; $i < $parametersNb; $i++)
-        {
-            $stmt->bindParam(':value' . $i, $values[$i]);
-        }
-        $data = $stmt->execute();
-
-        if (!$stmt)
-        {
-            die ('error because ' . print_r($bdd->errorInfo(), true));
-        }
-        else
-        {
-            echo $stmt->fetch();
-        }
-
-        /*echo "ici";
-        $sql = 'INSERT INTO membres (';
-        for ($i = 0; $i < $parametersNb; $i++)
-        {
-            if ($i == $parametersNb - 1)
-            {
-                $sql .= $attributes[$i] . ')';
-            }
-            else
-            {
-                $sql .= $attributes[$i] . ',';
-            }
-        }
-        $sql .= 'VALUES(';
-        $stmt = $bdd->prepare($sql);
-        for ($i = 1; $i <= $parametersNb; $i++)
-        {
-            $stmt->bindParam($i, $values[$i - 1]);
-        }
-        $data = $stmt->execute();
-        echo $data;*/
-
-
+        $success = bindExecute($bdd, $sql, $values);
+        if ($success)
+            sendEmail($method["email"], $password);
+        echo $success;
     }
     else
     {
-
         $sql = "UPDATE membres";
+        if ($method["password"])
+            echo $method["password"];
 
         for ($i = 0; $i < $parametersNb; $i++)
         {
@@ -100,30 +73,29 @@ if (validateRequest($validAttributes, $attributes) && isset($_SESSION['id']))
         $sql .= ' WHERE ';
         $sql .= 'id' . ' = ' . $_SESSION['id'];
 
-        echo $sql;
-
-        $stmt = $bdd->prepare($sql);
-
-        for ($i = 0; $i < $parametersNb; $i++)
-        {
-            $stmt->bindParam(':value' . $i, $values[$i]);
-        }
-        $data = $stmt->execute();
-        echo $data;
-
-        if (!$stmt)
-        {
-            die ('error because ' . print_r($bdd->errorInfo(), true));
-        }
-        else
-        {
-            echo $data;
-        }
+        bindExecute($bdd, $sql, $values);
     }
-
-
 }
 
+function bindExecute(PDO $bdd, String $sql, array $values)
+{
+    $stmt = $bdd->prepare($sql);
+
+    for ($i = 0; $i < sizeof($values); $i++)
+    {
+        $stmt->bindParam(':value' . $i, $values[$i]);
+    }
+    $data = $stmt->execute();
+
+    if (!$stmt)
+    {
+        die ('error because ' . print_r($bdd->errorInfo(), true));
+    }
+    else
+    {
+        return $data;
+    }
+}
 
 function validateRequest($validAttributes, $attributes)
 {
@@ -135,4 +107,11 @@ function validateRequest($validAttributes, $attributes)
         }
     }
     return true;
+}
+
+
+function randomPassword($length)
+{
+    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    return substr(str_shuffle($chars),0,$length);
 }

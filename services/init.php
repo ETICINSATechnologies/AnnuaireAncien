@@ -2,9 +2,11 @@
 include 'connectDB.php';
 session_start();
 
-if(isset($_SESSION['id']))
+if ($_SESSION['admin'])
+    echo true;
+elseif(isset($_SESSION['id']))
 {
-    $parametersNb =1;
+    $parametersNb = 1;
     $attributes = array('id');
     $values = array($_SESSION['id']);
     $sql = 'SELECT * FROM membres ';

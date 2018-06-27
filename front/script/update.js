@@ -1,18 +1,20 @@
-function update()
+function update(create)
 {
     $(document).ready(function ()
     {
+        create = create || false;
         var attributs = ['firstname', 'lastname', 'email', 'phone', 'company', 'mandate_year', 'department', 'etic_position'];
         var parameters = getFormValues("#profil_form");
         var info_area = document.getElementById("info_area");
         var img = document.getElementById("image");
-        var bol = checkparam(parameters);
-
         img.style.setProperty("animation-name", "");
         info_area.innerText = "";
         parameters = lowercase(parameters, attributs);
 
-        if (bol)
+        if (create)
+            attributs['password'] = "";
+
+        if (checkparam(parameters))
         {
             $.get(
                 '../../services/update.php',
@@ -25,7 +27,6 @@ function update()
                     {
                         if (response)
                         {
-
                             info_area.innerHTML = "<p> Les informations ont bien été sauvegardées!</p>";
                             info_area.style.setProperty("color", "#009e11");
                             init();
@@ -62,23 +63,14 @@ function lowercase(array, attributs)
         {
             array[attributs[i]] = '';
         }
-
     }
-    /*array['firstname']=array['firstname'].toLowerCase();
-    array['lastname']=array['lastname'].toLowerCase();
-    array['email']=array['email'].toLowerCase();
-    array['phone']=array['phone'].toLowerCase();
-    array['company']=array['company'].toLowerCase();
-    array['mandate_year']=array['mandate_year'].toLowerCase();
-    array['department']=array['department'].toLowerCase();
-    array['etic_position']=array['etic_position'].toLowerCase();*/
+
     return array;
 }
 
 function checkparam(array)
 {
-    if (array['firstname'] === undefined || array['lastname'] === undefined || array['email'] === undefined) return false;
-    else return true;
+    return !(array['firstname'] === undefined || array['lastname'] === undefined || array['email'] === undefined);
 }
 
 
@@ -177,3 +169,4 @@ function updatePassword()
         password_info.innerHTML = "<p> Mots de passes différents ! </p>"
     }
 }
+

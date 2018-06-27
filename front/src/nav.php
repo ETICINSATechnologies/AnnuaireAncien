@@ -1,8 +1,8 @@
 <nav>
-    <button id="rechercher"> Rechercher </button>
-    <button id="connexion"> Se connecter </button>
-    <button id="deconnexion"> Se déconnecter </button>
-    <button id="profil"> Mon Profil </button>
-    <button id="admin"> Admin </button>
+    <a href="recherche.php" id="rechercher"> Rechercher </a>
+    <a href="connexion.php" id="connexion"> Se connecter </a>
+    <a href="accueil.php" id="deconnexion"> Se déconnecter </a>
+    <a href="profil.php" id="profil"> Mon Profil </a>
+    <a href="ajout.php" id="admin"> Admin </a>
     <img id="help_icon" src="../../public/image/help_icon.png" alt="">
 </nav>

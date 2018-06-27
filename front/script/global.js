@@ -40,7 +40,7 @@ function format(name, values)
     }
     else if (oldString === undefined)
     {
-        newString = "non précisé";
+        newString = "";
     }
     else if (name === "lastname")
     {
@@ -66,41 +66,6 @@ function format(name, values)
 
     return newString
 }
-
-
-$("#accueil").click(function ()
-{
-    window.location = "accueil.php";
-});
-
-$("#title").click(function(){
-    window.location = "accueil.php";
-});
-
-$("#rechercher").click(function ()
-{
-   window.location = "recherche.php";
-});
-
-$("#connexion").click(function ()
-{
-    window.location = "connexion.php";
-});
-
-$("#deconnexion").click(function ()
-{
-    window.location = "accueil.php";
-});
-
-$("#profil").click(function ()
-{
-    window.location = "profil.php";
-});
-
-$("#admin").click(function ()
-{
-    window.location = "admin.php";
-});
 
 $("#help_icon").click(function ()
 {

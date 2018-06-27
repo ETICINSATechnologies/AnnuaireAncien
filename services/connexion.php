@@ -1,6 +1,8 @@
 <?php
 include 'connectDB.php';
 
+session_start();
+
 $validAttributes = array('email', 'password');
 
 $method = $_GET;
@@ -18,7 +20,7 @@ if (validateRequest($validAttributes, $attributes))
     if ($admin)
     {
         $_SESSION['id'] = $admin['id'];
-        $_SESSION['admin'] = "true";
+        $_SESSION['admin'] = true;
         echo "admin";
     }
     else
@@ -28,11 +30,13 @@ if (validateRequest($validAttributes, $attributes))
         if ($membre)
         {
             $_SESSION['id'] = $membre['id'];
-            $_SESSION['admin'] = "false";
+            $_SESSION['admin'] = false;
             echo "membre";
         }
         else
         {
+            $_SESSION['id'] = "";
+            $_SESSION['admin'] = "";
             echo "false";
         }
     }

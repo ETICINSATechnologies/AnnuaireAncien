@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 -- Structure de la table `membres`
 --
 
-DROP TABLE IF EXISTS `membres`;
-CREATE TABLE IF NOT EXISTS `membres` (
+DROP TABLE IF EXISTS ann_membres;
+CREATE TABLE IF NOT EXISTS `ann_membres` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(64) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
   `lastname` varchar(64) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `membres` (
 -- Déchargement des données de la table `membres`
 --
 
-INSERT INTO `membres` (`id`, `firstname`, `lastname`, `phone`, `email`, `company`, `etic_position`, `mandate_year`, `department`, `photo`, `password`) VALUES
+INSERT INTO ann_membres (`id`, `firstname`, `lastname`, `phone`, `email`, `company`, `etic_position`, `mandate_year`, `department`, `photo`, `password`) VALUES
 (1, 'alex', 'lang', '0612356897', 'alex.lang@etic-insa.com', 'facebook', 'resp dsi', '2018', 'informatique', '1.jpg', 'b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86'),
 (2, 'eline', 'achard', '0635896457', 'eline.achard@gmail.com', '', 'présidente', '2017', 'gi', '', ''),
 (3, 'pauline', 'geslin', '06 87 58 13 30', '', '', 'secrétaire général', '0', 'gi', '', ''),

@@ -7,7 +7,7 @@
     justify-self: center;
     /*vertical-align: middle;*/
 
-    margin: auto;
+    margin: 3vmin auto;
 
     height: 78vmin;
     width: 95%;
@@ -37,10 +37,13 @@
     background-color: white;
     color: black;
 
-    margin: auto;
+    margin: 0 auto auto auto;
 
     width: 100%;
-    height: 95%;
+}
+
+#ca_adding {
+    margin: auto;
 }
 
 #response_area {
@@ -176,7 +179,6 @@
     padding: 1vw;
 
     font-size: 35px;
-    height: 92%;
 }
 
 

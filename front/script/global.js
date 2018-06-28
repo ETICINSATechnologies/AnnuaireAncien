@@ -67,6 +67,7 @@ function format(name, values)
     return newString
 }
 
+
 $("#help_icon").click(function ()
 {
     window.location = "aide.php";

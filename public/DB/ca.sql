@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `ca`
 --
 
-DROP TABLE IF EXISTS `ca`;
+DROP TABLE IF EXISTS ann_ca;
 CREATE TABLE IF NOT EXISTS `ca` (
   `id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `ca` (
 -- Déchargement des données de la table `ca`
 --
 
-INSERT INTO `ca` (`id`) VALUES
+INSERT INTO ann_ca (`id`) VALUES
 (1),
 (2),
 (3),

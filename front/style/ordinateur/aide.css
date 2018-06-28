@@ -1,11 +1,11 @@
 section {
     display: grid;
-    grid-template-rows: 4.7vw 6.7vw 1fr;
+    grid-template-rows: 4.7vw 6.7vw 30vmin 1fr;
 
     vertical-align: middle;
     justify-self: center;
 
-    margin: auto;
+    margin: 3vmin auto;
 
     width: 90%;
     height: 80%;
@@ -16,7 +16,7 @@ section * {
     justify-self: center;
 
     margin: 0 auto;
-    font-size: 3.7vw;
+    font-size: 3vw;
 }
 
 #div2 {
@@ -28,4 +28,29 @@ section * {
 p {
     margin: auto;
     height: 100%;
+}
+
+#div4 {
+    cursor: pointer;
+    color: #009e11;
+    background: white;
+    border: 0;
+    text-decoration: underline;
+    height: 6.7vw;
+}
+
+#div5 {
+    animation-duration: 2s;
+
+    color: white;
+
+    font-size: 2vw;
+    margin: 1vw auto ;
+    width: 15vw;
+}
+
+@keyframes display {
+    0% {color: white;}
+    40% {color: black;}
+    100% {color: white;}
 }

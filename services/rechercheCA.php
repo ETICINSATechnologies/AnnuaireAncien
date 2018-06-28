@@ -1,7 +1,7 @@
 <?php
 include 'connectDB.php';
 
-$sql = 'SELECT m.id, m.firstname, m.lastname, m.etic_position, m.photo FROM membres m, ca WHERE m.id = ca.id';
+$sql = 'SELECT m.id, m.firstname, m.lastname, m.etic_position, m.photo FROM ann_membres m, ann_ca WHERE m.id = ann_ca.id';
 
 $response = $bdd->query($sql);
 if (!$response)

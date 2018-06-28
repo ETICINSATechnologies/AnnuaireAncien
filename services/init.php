@@ -9,7 +9,7 @@ elseif(isset($_SESSION['id']))
     $parametersNb = 1;
     $attributes = array('id');
     $values = array($_SESSION['id']);
-    $sql = 'SELECT * FROM membres ';
+    $sql = 'SELECT * FROM ann_membres ';
 
     for ($i = 0; $i < $parametersNb; $i++)
     {

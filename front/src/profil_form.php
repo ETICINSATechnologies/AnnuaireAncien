@@ -1,11 +1,11 @@
 <form id="profil_form">
     <div id="image"></div>
 
-    <p id="p_lastname" class="right p_info"> Nom </p>
+    <p id="p_lastname" class="right p_info needed"> Nom </p>
 
     <input type="text" id="lastname" class="right" value="" title="lastname">
 
-    <p id="p_firstname" class="right p_info"> Prénom </p>
+    <p id="p_firstname" class="right p_info needed"> Prénom </p>
 
     <input type="text" id="firstname" class="right" value="" title="firstname">
 
@@ -17,7 +17,7 @@
 
     <input type="text" id="department" value="" title="department">
 
-    <p id="p_email" class="p_info"> Adresse mail </p>
+    <p id="p_email" class="p_info needed"> Adresse mail </p>
 
     <p id="p_etic_position" class="p_info"> Poste che Etic </p>
 

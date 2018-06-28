@@ -10,7 +10,7 @@ $values = array_values($method);
 
 if (validateRequest($validAttributes, $attributes))
 {
-    $sql = 'SELECT * FROM membres';
+    $sql = 'SELECT * FROM ann_membres';
 
     for ($i = 0; $i < $parametersNb; $i++)
     {

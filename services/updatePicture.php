@@ -2,6 +2,7 @@
 include 'connectDB.php';
 session_start();
 $index = 'icone';
+
 if (isset($_SESSION['id']) and isset($_FILES[$index]))
 {
     $maxsize = 1536054545456450;
@@ -30,36 +31,40 @@ if (isset($_SESSION['id']) and isset($_FILES[$index]))
     $upload = move_uploaded_file($_FILES[$index]['tmp_name'], $destination);
 
     //Modification dans la base de donnees
-    if ($upload)
+    if ($_SESSION['ADMIN'])
     {
-        $sql = 'UPDATE membres SET photo=:value1 WHERE id=:value2';
-
-        $stmt = $bdd->prepare($sql);
-
-        $stmt->bindParam(':value1', $nom);
-        $stmt->bindParam(':value2', $_SESSION['id']);
-
-        $stmt->execute();
-
-        if (!$stmt)
-        {
-            die ('error because ' . print_r($bdd->errorInfo(), true));
-        }
-        else
-        {
-            echo json_encode(true);
-            header('Location: http://localhost/AnnuaireAncien/front/src/profil.php');
-            exit();
-            //echo $data;
-        }
+        return $destination;
     }
     else
     {
-        echo FALSE;
-    }
+        if ($upload)
+        {
+            $sql = 'UPDATE ann_membres SET photo=:value1 WHERE id=:value2';
 
+            $stmt = $bdd->prepare($sql);
+
+            $stmt->bindParam(':value1', $nom);
+            $stmt->bindParam(':value2', $_SESSION['id']);
+
+            $stmt->execute();
+
+            if (!$stmt)
+            {
+                die ('error because ' . print_r($bdd->errorInfo(), true));
+            }
+            else
+            {
+                echo json_encode(true);
+                header('Location: http://localhost/AnnuaireAncien/front/src/profil.php');
+                exit();
+                //echo $data;
+            }
+        }
+        else
+        {
+            echo FALSE;
+        }
+    }
 
 }
 
-
-?>

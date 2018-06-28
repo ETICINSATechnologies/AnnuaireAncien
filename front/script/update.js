@@ -33,12 +33,12 @@ function update(create)
                         }
                         else
                         {
-                            info_area.innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde de vos informations, veuillez recommencer ultérieurement!</p>";
+                            info_area.innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde Veuillez réessayer !</p>";
                         }
                     }
                     catch (e)
                     {
-                        info_area.innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde de vos informations, veuillez recommencer ultérieurement!</p>";
+                        info_area.innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde Veuillez réessayer !</p>";
                     }
                 },
                 'text'

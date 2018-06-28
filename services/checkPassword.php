@@ -9,7 +9,7 @@ if(isset($_SESSION['id']))
     $id = $_SESSION['id'];
     $password = hash('sha512', $method["password"]);
 
-    $sql = 'SELECT id FROM membres WHERE id = :id AND password = :password';
+    $sql = 'SELECT id FROM ann_membres WHERE id = :id AND password = :password';
 
     $stmt = $bdd->prepare($sql);
 

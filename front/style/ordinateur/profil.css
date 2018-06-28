@@ -49,20 +49,32 @@ section {
     font-size: 4vmin;
 }
 
+.needed:after {
+    content: "*";
+    color: red;
+}
+
 #profil_form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(10, 1fr) 8vmin;
+    grid-template-rows: repeat(10, 1fr) 10vmin;
 
     background-color: white;
 
     justify-self: center;
     vertical-align: middle;
     border: 3px solid black;
-    margin: auto;
+    margin: 8vmin auto;
 
     width: 60%;
     height: 68vmin;
+}
+
+@media (orientation: portrait)
+{
+    #profil_form {
+        min-width: 90vw;
+    }
 }
 
 #profil_form * {
@@ -141,6 +153,8 @@ img {
 .div_button {
     display: grid;
     justify-self: center;
+    margin: auto auto 0.5vmin auto;
+    height: 80%;
 }
 
 .input_button {

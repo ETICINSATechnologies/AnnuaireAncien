@@ -85,31 +85,23 @@ $(document).ready(function ()
 
 function checkPassword(old_password)
 {
-    var password_info = document.getElementById("password_info");
-
     $.get(
-        '../../services/update.php',
-        {"password" : old_password},
+        '../../services/checkPassword.php',
+        {"password": old_password},
         function (response)
         {
-            try
+            if (response)
             {
-                if (response)
-                {
-                    init();
-                }
-                else
-                {
-                    password_info.innerHTML = "<p> Mot de passe incorrect </p>";
-                }
+
             }
-            catch (e)
+            else
             {
-                password_info.innerHTML = "<p> Une erreur est survenue </p>";
+
             }
         },
         'text'
     );
+    return r;
 }
 
 function changePassword(new_password)
@@ -122,7 +114,7 @@ function changePassword(new_password)
 
     $.get(
         '../../services/update.php',
-        {"password" : new_password},
+        {"password": new_password},
         function (response)
         {
             try
@@ -135,12 +127,12 @@ function changePassword(new_password)
                 }
                 else
                 {
-                    info_area.innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde de vos informations, veuillez recommencer ultérieurement!</p>";
+                    info_area.innerHTML = "<p style='color: red'> Un problème est survenu, veuillez recommencer ultérieurement!</p>";
                 }
             }
             catch (e)
             {
-                info_area.innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde de vos informations, veuillez recommencer ultérieurement!</p>";
+                info_area.innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde, veuillez recommencer ultérieurement!</p>";
             }
         },
         'text'
@@ -159,10 +151,22 @@ function updatePassword()
     }
     else if (parameters["new_password"] === parameters["confirmed_new_password"])
     {
-        checkPassword(parameters["old_password"]);
-        changePassword(parameters["new_password"]);
-        document.getElementById('password_window').style.display = 'none';
-        document.getElementById('form_area').style.setProperty("opacity", "");
+        $.get(
+            '../../services/checkPassword.php',
+            {"password": parameters['old_password']},
+            function (response)
+            {
+                console.log(response);
+                if (response === "true")
+                {
+                    changePassword(parameters["new_password"]);
+                    document.getElementById('password_window').style.display = 'none';
+                    document.getElementById('form_area').style.setProperty("opacity", "");
+                }
+                else
+                    password_info.innerHTML = "<p> Mot de passe incorrect </p>";
+            }
+        );
     }
     else
     {

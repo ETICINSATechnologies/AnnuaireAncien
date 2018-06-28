@@ -61,6 +61,11 @@ if (validateRequest($validAttributes, $attributes) && isset($_SESSION['id']))
 
         for ($i = 0; $i < $parametersNb; $i++)
         {
+            if ($attributes[$i] == "password")
+            {
+                echo hash('sha512', $values[$i]);
+                $values[$i] = hash('sha512', $values[$i]);
+            }
             if ($i == 0)
             {
                 $sql .= ' SET ';

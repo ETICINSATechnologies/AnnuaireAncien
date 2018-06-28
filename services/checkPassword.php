@@ -9,6 +9,7 @@ if(isset($_SESSION['id']))
     $id = $_SESSION['id'];
     $password = hash('sha512', $method["password"]);
 
+
     $sql = 'SELECT id FROM ann_membres WHERE id = :id AND password = :password';
 
     $stmt = $bdd->prepare($sql);
@@ -26,7 +27,7 @@ if(isset($_SESSION['id']))
     else
     {
         $data = $stmt->fetch();
-        echo json_encode($data);
+        echo json_encode(!empty($data));
     }
 }
 

@@ -3,7 +3,7 @@ include 'connectDB.php';
 
 $validAttributes = array('firstname', 'lastname', 'company', 'mandate_year');
 
-$method = $_POST;
+$method = $.POST;
 $parametersNb = sizeof($method);
 $attributes = array_keys($method);
 $values = array_values($method);

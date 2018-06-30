@@ -23,7 +23,7 @@ header {
 
 #header_a {
     display: grid;
-    grid-template-columns: 16vw 1fr 16vw;
+    grid-template-columns: 9vw 7vw 1fr 15vw;
 
     background-color: #6aa84f;
 
@@ -39,27 +39,23 @@ header {
 #accueil {
     grid-row: 1;
     grid-column: 1;
-    margin: auto;
-
-    color: white;
-    background-color: #274e13;
-    border: 0.4vh solid black;
+    margin: auto 1vw;
 
     padding: 0;
     font-size: 3vw;
-    height: 4vw;
+    height: 6.5vw;
 
-    width: 70%;
 }
 
 #accueil:hover {
     cursor: pointer;
-    background-color: #3a731c;
+    opacity: 0.7;
 }
 
 #title {
     color: white;
 
+    grid-column: 3;
     text-align: center;
     margin: auto;
 

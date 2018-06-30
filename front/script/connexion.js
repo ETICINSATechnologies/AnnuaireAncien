@@ -10,7 +10,7 @@ function connect()
         {
             parameters['email'] = parameters['email'].toLowerCase();
 
-            $.get(
+            $.post(
                 '../../services/connexion.php',
                 parameters,
                 function (response)

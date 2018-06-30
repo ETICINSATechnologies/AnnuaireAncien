@@ -2,7 +2,7 @@
 include 'connectDB.php';
 session_start();
 
-$method = $_GET;
+$method = $_POST;
 
 if(isset($_SESSION['id']))
 {

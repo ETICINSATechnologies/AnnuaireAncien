@@ -5,7 +5,7 @@ session_start();
 
 $validAttributes = array('firstname', 'lastname', 'phone', 'email', 'password', 'company', 'etic_position', 'mandate_year', 'department');
 
-$method = $_GET;
+$method = $_POST;
 $parametersNb = sizeof($method);
 $attributes = array_keys($method);
 $values = array_values($method);

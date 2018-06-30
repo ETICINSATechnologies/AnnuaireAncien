@@ -14,7 +14,7 @@
         Afin de récupérer vos identifiants, veuillez contacter par mail l'administrateur de ce site en utilisant
         l'adresse mail suivante :
     </div>
-    <button id="div2" onclick=CopyToClipboard("div2")> admin.annuaire@etic-insa.com</button>
+    <button id="div2" onclick=CopyToClipboard("div2")> contact@etic-insa.com</button>
     <div id="div3"> adresse copié ! </div>
 </section>
 

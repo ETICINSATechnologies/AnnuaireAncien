@@ -16,7 +16,7 @@ function update(create)
 
         if (checkparam(parameters))
         {
-            $.get(
+            $.post(
                 '../../services/update.php',
                 parameters,
                 function (response)
@@ -85,7 +85,7 @@ $(document).ready(function ()
 
 function checkPassword(old_password)
 {
-    $.get(
+    $.post(
         '../../services/checkPassword.php',
         {"password": old_password},
         function (response)
@@ -112,7 +112,7 @@ function changePassword(new_password)
     info_area.style.setProperty("color", "red");
     img.style.setProperty("animation-name", "hideImg");
 
-    $.get(
+    $.post(
         '../../services/update.php',
         {"password": new_password},
         function (response)
@@ -151,7 +151,7 @@ function updatePassword()
     }
     else if (parameters["new_password"] === parameters["confirmed_new_password"])
     {
-        $.get(
+        $.post(
             '../../services/checkPassword.php',
             {"password": parameters['old_password']},
             function (response)

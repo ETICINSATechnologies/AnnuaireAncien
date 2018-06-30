@@ -14,7 +14,7 @@ function update()
 
         if (bol)
         {
-            $.get(
+            $.post(
                 '../../services/update.php',
                 parameters,
                 function (response)

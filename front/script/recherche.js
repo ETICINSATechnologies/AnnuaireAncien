@@ -13,7 +13,7 @@ function search()
 
         if (parameters)
         {
-            $.get(
+            $.post(
                 '../../services/recherche.php',
                 parameters,
                 function (response)
@@ -48,7 +48,7 @@ function search()
 
 function getInfoMember(id)
 {
-    $.get(
+    $.post(
         '../../services/recherche.php',
         {'id': id},
         function (response)

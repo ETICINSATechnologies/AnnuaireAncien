@@ -2,7 +2,7 @@ function init()
 {
     $(document).ready(function ()
     {
-        $.get(
+        $.post(
             '../../services/init.php',
             function (response)
             {
@@ -15,12 +15,12 @@ function init()
                     }
                     else
                     {
-                        document.location.href = "accueil.php";
+                        document.location.href = "../src/accueil.php";
                     }
                 }
                 catch (e)
                 {
-                    document.location.href = "accueil.php";
+                    document.location.href = "../src/accueil.php";
                 }
             },
             'text'

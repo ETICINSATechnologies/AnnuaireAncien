@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include 'front/src/head.php' ?>
-    <link rel="stylesheet" href="front/style/ordinateur/accueil.css">
+    <?php include 'head.php' ?>
+    <link rel="stylesheet" href="../style/ordinateur/accueil.css">
 </head>
 
 <body>
-<?php include 'front/src/header.php'; ?>
-<?php include 'front/src/nav.php'; ?>
+<?php include 'header.php'; ?>
+<?php include 'nav.php'; ?>
 
 <section>
     <div class="mandat" id="mandat_left"></div>
@@ -18,8 +18,8 @@
     <div class="mandat" id="mandat_right"></div>
 </section>
 
-<?php include 'front/src/footer.php'; ?>
-<?php include 'front/script/config.php'; ?>
-<script src="front/script/accueil.js"></script>
+<?php include 'footer.php'; ?>
+<?php include '../script/config.php'; ?>
+<script src="../script/accueil.js"></script>
 </body>
 </html>

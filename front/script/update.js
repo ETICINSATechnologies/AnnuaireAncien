@@ -1,3 +1,5 @@
+var positionId = 0;
+
 function update(create)
 {
     $(document).ready(function ()
@@ -174,3 +176,32 @@ function updatePassword()
     }
 }
 
+function deletePosition(event) {
+    var regex = /\d+/;
+    var id = event.target.id.match(regex);
+    if (id.length === 1)
+    {
+        var positionToDelete = document.getElementById("position_" + id);
+        positionToDelete.parentNode.removeChild(positionToDelete);
+    }
+}
+
+function addAPosition()
+{
+    var positions = document.getElementById("positions");
+    var positionNumber = positions.children.length;
+    if (positionNumber < 4) {
+        positionId++;
+        var new_position = document.createElement("div");
+        new_position.id = "position_" + positionId;
+        new_position.className = "position_container";
+        new_position.innerHTML =
+            "<p class='position_info'> Poste </p>" +
+            "<p class='position_year_info'> Année </p>" +
+            "<img src='../../public/image/delete_icon.png' alt='close' id='position_image" + positionId +
+                "' onclick='deletePosition(event)'/>" +
+            "<input type='text' class='position_input'/>" +
+            "<input type='text' class='year_position_input'/>";
+        positions.appendChild(new_position);
+    }
+}

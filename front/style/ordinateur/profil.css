@@ -22,12 +22,12 @@ section {
 #form_area {
     width: 100%;
     height: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
 
 #info_area {
     display: grid;
-    grid-column: 1;
-    grid-row: 1 / 5;
 
     z-index:1;
     margin: auto;
@@ -57,17 +57,80 @@ section {
 #profil_form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(10, 1fr) 10vmin;
+    grid-template-rows: repeat(7, 1fr) 10vmin;
 
     background-color: white;
 
     justify-self: center;
     vertical-align: middle;
     border: 3px solid black;
-    margin: 8vmin auto;
+    margin: 5vmin auto;
+    padding: 1vw;
 
-    width: 60%;
+    width: 90%;
     height: 68vmin;
+}
+
+#position_form {
+    width: 80%;
+    height: 69.5vmin;
+    margin: 5vmin auto;
+    display: grid;
+    grid-template-rows: 8vmin 1fr 10vmin;
+    justify-self: center;
+    vertical-align: middle;
+    border: 3px solid black;
+    padding: 0.5vw;
+}
+
+#position_form h1 {
+    margin: auto;
+    font-size: 2.5vw;
+    text-align: center;
+}
+
+#positions {
+    height: 90%;
+    padding: 5% 0;
+}
+
+#add_position {
+    width: 90%;
+    height: 60%;
+    font-size: 1.7vw;
+    margin: auto;
+}
+
+
+.position_container {
+    height: 9vmin;
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr;
+    grid-template-rows: 4vmin 1fr;
+    border: 0.3vmin solid black;
+    padding: 0.5vmin;
+    margin: 1vmin auto;
+}
+
+.position_container * {
+    margin: auto 0.4vmin;
+}
+
+.position_container p {
+    font-size: 3.5vmin;
+}
+
+.position_container input[type='text'] {
+    width: 70%;
+    justify-self: left;
+    font-size: 2.5vmin;
+}
+
+.position_container img {
+    width: 80%;
+    grid-row: 1 / 3;
+    grid-column: 3;
+    vertical-align: middle;
 }
 
 @media (orientation: portrait)
@@ -109,8 +172,6 @@ section {
 
 #image {
     display: grid;
-    grid-column: 1;
-    grid-row: 1 / 5;
 
     margin: auto auto 0 auto;
     background-color: white;

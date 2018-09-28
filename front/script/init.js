@@ -26,6 +26,25 @@ function init()
             'text'
         );
 
+        $.post(
+            '../../services/initPosition.php',
+            function(response)
+            {
+                try
+                {
+                    if (response)
+                    {
+                        var rows = JSON.parse(response);
+                        insertPositions(rows)
+                    }
+                }
+                catch(e)
+                {
+                    document.location.href = "../src/accueil.php";
+                }
+            }
+        )
+
     });
 }
 
@@ -49,4 +68,13 @@ function insertInfos(row)
     image.innerHTML = "";
 
     image.appendChild(img);
+}
+
+function insertPositions(rows)
+{
+    deleteAllPositions();
+    for (var i in rows)
+    {
+        addAPosition(rows[i])
+    }
 }

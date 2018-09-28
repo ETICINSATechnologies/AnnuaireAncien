@@ -5,7 +5,7 @@ function update(create)
     $(document).ready(function ()
     {
         create = create || false;
-        var attributs = ['firstname', 'lastname', 'email', 'phone', 'company', 'mandate_year', 'department', 'etic_position'];
+        var attributs = ['firstname', 'lastname', 'email', 'phone', 'company', 'department'];
         var parameters = getFormValues("#profil_form");
         var info_area = document.getElementById("info_area");
         var img = document.getElementById("image");
@@ -51,6 +51,34 @@ function update(create)
             document.getElementById("info_area").innerHTML = "<p style='color: red'> Veuillez saisir votre nom, prénom et email ! </p>";
         }
     });
+
+    updatePosition();
+}
+
+function updatePosition()
+{
+    var positions = [];
+    var id = 0;
+    $(".position_container").each(function() {
+        positions.push({});
+        $(this).children(":text").each(function ()
+        {
+            var match_type =this.className.match(/[\da-z]*/i);
+            if (match_type)
+            {
+                positions[id][match_type[0]] = this.value;
+            }
+        });
+        id++;
+    });
+
+    $.post(
+        '../../services/updatePosition.php',
+        JSON.stringify(positions),
+        function(response) {
+            console.log(response);
+        }
+    )
 }
 
 function lowercase(array, attributs)
@@ -186,10 +214,24 @@ function deletePosition(event) {
     }
 }
 
-function addAPosition()
+function deleteAllPositions()
+{
+    document.getElementById("positions").innerHTML = "";
+}
+
+function addAPosition(row)
 {
     var positions = document.getElementById("positions");
     var positionNumber = positions.children.length;
+
+    var position = '';
+    var year = '';
+    if (row && row['position'] && row['year'])
+    {
+        position = row['position'];
+        year = row['year'];
+    }
+
     if (positionNumber < 4) {
         positionId++;
         var new_position = document.createElement("div");
@@ -200,8 +242,8 @@ function addAPosition()
             "<p class='position_year_info'> Année </p>" +
             "<img src='../../public/image/delete_icon.png' alt='close' id='position_image" + positionId +
                 "' onclick='deletePosition(event)'/>" +
-            "<input type='text' class='position_input'/>" +
-            "<input type='text' class='year_position_input'/>";
+            "<input type='text' class='position_input' value='" + position + "'/>" +
+            "<input type='text' class='year_position_input' value='" + year + "'/>";
         positions.appendChild(new_position);
     }
 }

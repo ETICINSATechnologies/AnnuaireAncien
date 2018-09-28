@@ -138,6 +138,10 @@ section {
     #profil_form {
         min-width: 90vw;
     }
+
+    #form_area {
+        grid-template-columns: 1fr;
+    }
 }
 
 #profil_form * {

@@ -26,6 +26,25 @@ function init()
             'text'
         );
 
+        $.post(
+            '../../services/initPosition.php',
+            function(response)
+            {
+                try
+                {
+                    if (response)
+                    {
+                        var rows = JSON.parse(response);
+                        insertPositions(rows)
+                    }
+                }
+                catch(e)
+                {
+                    document.location.href = "../src/accueil.php";
+                }
+            }
+        )
+
     });
 }
 
@@ -36,9 +55,9 @@ function insertInfos(row)
     document.getElementById('firstname').setAttribute('value', format('firstname', row));
     document.getElementById('phone').setAttribute('value', format('phone', row));
     document.getElementById('department').setAttribute('value', format('department', row));
-    document.getElementById('etic_position').setAttribute('value', format('etic_position', row));
     document.getElementById('company').setAttribute('value', format('company', row));
-    document.getElementById('mandate_year').setAttribute('value', format('mandate_year', row));
+    // document.getElementById('etic_position').setAttribute('value', format('etic_position', row));
+    // document.getElementById('mandate_year').setAttribute('value', format('mandate_year', row));
 
     var img = document.createElement("img");
     var image = document.getElementById('image');
@@ -49,4 +68,13 @@ function insertInfos(row)
     image.innerHTML = "";
 
     image.appendChild(img);
+}
+
+function insertPositions(rows)
+{
+    deleteAllPositions();
+    for (var i in rows)
+    {
+        addAPosition(rows[i])
+    }
 }

@@ -35,7 +35,7 @@ elseif(isset($_SESSION['id']))
     }
     else
     {
-        $data = $stmt->fetch();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
         echo json_encode($data);
     }
 }

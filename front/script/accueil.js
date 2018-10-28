@@ -36,6 +36,7 @@ function resizeCAMembers(mandatName)
     var CANumber = mandat.children.length;
     var heightDispo = 0.95 * mandat.clientHeight;
     var heightDiv = heightDispo / CANumber;
+    console.log(CANumber, heightDispo, heightDiv);
 
     mandat.style.setProperty("grid-template-rows", "repeat(" + CANumber + ", " + heightDiv + "px)");
 }

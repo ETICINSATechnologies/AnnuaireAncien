@@ -16,7 +16,7 @@
 #search_area {
     display: grid;
 
-    background-color: #b6d7a8;
+    background-color: rgb(155, 202, 139);
 
     margin: auto;
 
@@ -80,7 +80,7 @@
 }
 
 #search_form input[type="text"] {
-    font-size: 1.5vw;
+    font-size: 2vw;
     height: 3vw;
 
     width: 100%;
@@ -99,6 +99,11 @@
 
     font-size: 1.5vw;
     margin-right: 3%;
+
+    cursor: pointer;
+    color: white;
+    background: #009e0f;
+    border: 0.3vmin solid black;
 
     width: 45%;
     height: 100%;
@@ -123,12 +128,12 @@
     }
 
     #coordonnes {
-        font-size: 3.4vmin;
+        font-size: 3vmin;
     }
 
     #photo_membre {
-        width: 15vmin;
-        height: 15vmin;
+        /*width: 15vmin;*/
+        height: 100%;
     }
 }
 
@@ -168,6 +173,7 @@
 #info {
     display: grid;
     grid-template-columns: 20vmin 1fr;
+    grid-template-rows: 12vmin 6vmin 1fr;
 
     background-color: white;
 
@@ -178,8 +184,6 @@
     border: 0.6vmin solid black;
 
     padding: 1vw;
-
-    font-size: 35px;
     height: 90%;
 }
 
@@ -219,7 +223,7 @@ thead, tbody {
 }
 
 thead {
-    background-color: #4CAF50;
+    background-color: rgb(155, 202, 139);
 }
 
 tbody {
@@ -259,7 +263,7 @@ tr:hover {
 
 th {
     color: white;
-    background-color: #4CAF50;
+    background-color: rgb(155, 202, 139);
 
     text-align: left;
 }

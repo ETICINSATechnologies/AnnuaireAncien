@@ -106,7 +106,7 @@ function createTable(attributes, columnsName, rows, htmlId, infoId)
         table.appendChild(tbody);
         container.innerHTML = "";
         container.appendChild(table);
-        container.style.setProperty("border", "0.45vh solid black");
+        container.style.setProperty("border", "0.4vmin solid black");
     }
     else
     {

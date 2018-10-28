@@ -6,7 +6,7 @@
     display: grid;
     grid-template-rows: 1fr repeat(5, 6.2vmin) 10fr;
 
-    background-color: #b6d7a8;
+    background-color: rgba(155, 202, 139, 1);
 
     justify-self: center;
     vertical-align: middle;

@@ -15,13 +15,19 @@ section {
     display: grid;
     grid-template-columns: 100%;
 
-    background-color: #B6D7A8;
-
     margin-top: 0.2vh;
     padding: 1%;
 
     width: 100%;
-    height: 1000%;
+    height: 100%;
+}
+
+#mandat_left {
+    background-color: rgba(0, 83, 96, 0.4);
+}
+
+#mandat_right {
+    background-color: rgba(155, 202, 139, 0.6);
 }
 
 .member * {
@@ -57,7 +63,7 @@ section {
 
     margin: auto;
 
-    font-size: 6vw;
+    font-size: 5.5vw;
     width: 80%;
     height: 80%;
 }

@@ -4,6 +4,10 @@ section {
     grid-template-rows: 1fr;
     grid-gap: 1%;
 
+    background: url('../../../public/image/accueil.jpg') no-repeat;
+    background-size: 100% auto;
+
+
     overflow: hidden;
 
     text-align: center;
@@ -20,14 +24,6 @@ section {
 
     width: 100%;
     height: 100%;
-}
-
-#mandat_left {
-    background-color: rgba(0, 83, 96, 0.4);
-}
-
-#mandat_right {
-    background-color: rgba(155, 202, 139, 0.6);
 }
 
 .member * {
@@ -57,23 +53,39 @@ section {
 }
 
 #div_accueil {
+    z-index: 2;
+    grid-row: 1;
     grid-column: 2;
 
     vertical-align: middle;
 
     margin: auto;
+    color: white;
 
     font-size: 5.5vw;
     width: 80%;
-    height: 80%;
+    height: 100%;
 }
 
 #bienvenue {
-    margin: auto auto 5vh auto;
+    margin: 6vmin auto 13vmin auto;
 }
 
 #etic {
     font-weight: bold;
 
+    margin: auto;
+}
+
+
+#background {
+    grid-row: 1;
+    grid-column: 1 / 4;
+    background-image: linear-gradient(to right, rgb(0, 83, 96), rgb(155, 202, 139));
+    opacity: 0.65;
+    z-index: 1;
+
+    width: 100vw;
+    height: 100vh;
     margin: auto;
 }

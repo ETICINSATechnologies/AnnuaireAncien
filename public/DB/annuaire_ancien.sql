@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 29, 2018 at 08:39 AM
+-- Generation Time: Oct 29, 2018 at 07:32 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.2.4
 
@@ -54,6 +54,23 @@ CREATE TABLE IF NOT EXISTS `ann_ca` (
   `id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ann_ca`
+--
+
+INSERT INTO `ann_ca` (`id`) VALUES
+(1),
+(2),
+(3),
+(4),
+(5),
+(6),
+(7),
+(8),
+(9),
+(10),
+(11);
 
 -- --------------------------------------------------------
 

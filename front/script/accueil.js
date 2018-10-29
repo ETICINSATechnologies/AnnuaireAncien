@@ -34,11 +34,21 @@ function resizeCAMembers(mandatName)
     var mandat = document.getElementById(mandatName);
 
     var CANumber = mandat.children.length;
-    var heightDispo = 0.95 * mandat.clientHeight;
+    var heightDispo = 0.99 * mandat.clientHeight;
     var heightDiv = heightDispo / CANumber;
-    console.log(CANumber, heightDispo, heightDiv);
 
-    mandat.style.setProperty("grid-template-rows", "repeat(" + CANumber + ", " + heightDiv + "px)");
+    var section = document.getElementById("section_accueil");
+
+    if (window.innerHeight < window.innerWidth)
+    {
+        section.style.setProperty("grid-template-columns", heightDiv * 1.2 + "px 1fr " + heightDiv * 1.2 + "px");
+        mandat.style.setProperty("grid-template-rows", "repeat(" + CANumber + ", " + heightDiv + "px)");
+    }
+    else
+    {
+        section.style.setProperty("grid-template-columns", "17vw 1fr 17vw");
+        mandat.style.setProperty("grid-template-rows", "repeat(" + CANumber + ", 15vw) 1fr");
+    }
 }
 
 
@@ -70,11 +80,6 @@ function displayCAMember(ca_length, position, ca_member)
     div.appendChild(p);
 
     container.appendChild(div);
-
-    var div_height = document.getElementById(div.id).clientHeight;
-    var p_height = document.getElementById(p.id).clientHeight;
-
-    document.getElementById(img.id).clientHeight = div_height - p_height;
 
     return ++position;
 }

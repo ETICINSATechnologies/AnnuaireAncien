@@ -11,6 +11,7 @@
 
 <section>
     <div class="mandat" id="mandat_left"></div>
+    <div id="background"></div>
     <div id="div_accueil">
         <p id="bienvenue" class="accueil"> Bienvenue sur l'annuaire des anciens</p>
         <p id="etic" class="accueil"> ETIC INSA TECHNOLOGIES</p>

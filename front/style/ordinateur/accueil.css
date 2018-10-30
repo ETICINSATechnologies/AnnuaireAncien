@@ -4,9 +4,7 @@ section {
     grid-template-rows: 1fr;
     grid-gap: 1%;
 
-    background: url('../../../public/image/accueil.jpg') no-repeat;
     background-size: 100% auto;
-
 
     overflow: hidden;
 
@@ -18,12 +16,21 @@ section {
 .mandat {
     display: grid;
     grid-template-columns: 100%;
+    grid-template-rows: repeat(15, 1fr);
 
     margin-top: 0.2vh;
     padding: 1%;
 
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 9.5vw);
+}
+
+#mandat_left {
+    background: rgba(0, 83, 96, 0.8);
+}
+
+#mandat_right {
+    background: rgba(155, 202, 139, 1);
 }
 
 .member * {
@@ -33,23 +40,41 @@ section {
 .mandat p {
     margin: auto;
     vertical-align: top;
+    grid-row: 1;
+    grid-column: 1;
+    color: white;
+    display: none;
 
-    font-size: 1vw;
+    font-size: 2vmin;
 }
 
 .mandat div {
     display: grid;
     grid-template-columns: 100%;
-    width: 100%;
+    width: calc(100% - 2vmin);
+    margin: auto;
     height: 100%;
 }
 
 .mandat img {
+    grid-row: 1;
+    grid-column: 1;
+    z-index: 0;
     justify-self: center;
     vertical-align: middle;
     margin: auto;
+    border-radius: 45%;
 
     height: 90%;
+}
+
+.member:hover p {
+    display: grid;
+    z-index: 1;
+}
+
+.member:hover img {
+    opacity: 0.4;
 }
 
 #div_accueil {
@@ -60,7 +85,6 @@ section {
     vertical-align: middle;
 
     margin: auto;
-    color: white;
 
     font-size: 5.5vw;
     width: 80%;
@@ -74,18 +98,5 @@ section {
 #etic {
     font-weight: bold;
 
-    margin: auto;
-}
-
-
-#background {
-    grid-row: 1;
-    grid-column: 1 / 4;
-    background-image: linear-gradient(to right, rgb(0, 83, 96), rgb(155, 202, 139));
-    opacity: 0.65;
-    z-index: 1;
-
-    width: 100vw;
-    height: 100vh;
     margin: auto;
 }

@@ -132,8 +132,10 @@
     }
 
     #photo_membre {
-        /*width: 15vmin;*/
-        height: 100%;
+        width: 17vmin;
+        height: 17vmin;
+        vertical-align: middle;
+        margin: auto;
     }
 }
 
@@ -152,12 +154,14 @@
     }
 
     #coordonnes {
-        font-size: 3vw;
+        font-size: 2.6vw;
     }
 
     #photo_membre {
-        width: 15vw;
-        height: 15vw;
+        width: 17vw;
+        height: 17vw;
+        margin: auto;
+        vertical-align: middle;
     }
 }
 

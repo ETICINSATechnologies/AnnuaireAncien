@@ -5,7 +5,7 @@ session_start();
 
 $validAttributes = array('email', 'password');
 
-$method = $_POST;
+$method = $_GET;
 
 $parametersNb = sizeof($method);
 $attributes = array_keys($method);
@@ -13,6 +13,7 @@ $attributes = array_keys($method);
 if (validateRequest($validAttributes, $attributes))
 {
     $method['password'] = hash('sha512', $method['password']);
+    echo $method['password'];
     $values = array_values($method);
 
     $admin = checkExist($bdd, $parametersNb, $values, $attributes, 'ann_admin');

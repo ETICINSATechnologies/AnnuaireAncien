@@ -56,11 +56,10 @@ function format(name, values)
         try
         {
             newString = oldString[0].toUpperCase();
-            newString += oldString.split(" ")[0].slice(1).toLowerCase();
-            newString += " " + oldString.split(" ")[1].toUpperCase();
+            newString += oldString.slice(1).toLowerCase();
         } catch (e)
         {
-            newString = oldString.toUpperCase();
+            newString = oldString.toLowerCase();
         }
     }
 

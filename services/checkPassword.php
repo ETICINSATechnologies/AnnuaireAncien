@@ -1,6 +1,5 @@
 <?php
 include 'connectDB.php';
-session_start();
 
 $method = $_POST;
 

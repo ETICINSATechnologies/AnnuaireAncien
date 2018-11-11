@@ -1,7 +1,7 @@
 <?php
 include 'connectDB.php';
 include 'sendEmail.php';
-session_start();
+include 'JwtCodec.php';
 
 $validAttributes = array('firstname', 'lastname', 'phone', 'email', 'password', 'company', 'etic_position', 'mandate_year', 'department');
 
@@ -12,27 +12,37 @@ $values = array_values($method);
 
 $postInput = json_decode(file_get_contents('php://input'), true);
 
-if (isset($_SESSION['id']))
+$headers = apache_request_headers();
+
+if (isset($headers['Authorization']))
 {
-    $sql = 'DELETE FROM ann_position WHERE membre = :idMembre';
-    $stmt = $bdd->prepare($sql);
-    $stmt->bindParam(':idMembre', $_SESSION['id']);
-    $stmt->execute();
-    $data = $stmt->execute();
-    if (!$stmt)
+    $signature = JwtCodec::decode($headers['Authorization']);
+    if ($signature['admin'] == 0)
     {
-        die ('error because ' . print_r($bdd->errorInfo(), true));
-    }
-    else
-    {
-        echo json_encode($data);
+        $id = $signature['id'];
+        $sql = 'DELETE FROM ann_position WHERE membre = :idMembre';
+        $stmt = $bdd->prepare($sql);
+        $stmt->bindParam(':idMembre', $id);
+        $stmt->execute();
+        $data = $stmt->execute();
+        if (!$stmt)
+        {
+            die ('error because ' . print_r($bdd->errorInfo(), true));
+        }
+        else
+        {
+            echo json_encode($data);
+        }
     }
 
-    foreach ($postInput as $position)
+    if ($signature['admin'] == 1)
+        $id = $postInput['membre'];
+
+    foreach ($postInput['positions'] as $position)
     {
-        $sql = 'INSERT INTO ann_position(position, membre, year) VALUES (:position, :membre, :year)';
+        $sql = 'INSERT INTO ann_position(etic_position, membre, mandate_year) VALUES (:position, :membre, :year)';
         $stmt = $bdd->prepare($sql);
-        $stmt->bindParam(':membre', $_SESSION['id']);
+        $stmt->bindParam(':membre', $id);
         $stmt->bindParam(':position', $position["position"]);
         $stmt->bindParam(':year', $position["year"]);
         $data = $stmt->execute();

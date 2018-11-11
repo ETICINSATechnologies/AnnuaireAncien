@@ -70,6 +70,11 @@
         document.getElementById('form_area').style.setProperty("opacity", "");
     });
     document.getElementById('update_input').addEventListener('click', update);
+    document.getElementById('deconnexion').addEventListener('click', function()
+    {
+        document.cookie = "jwt=";
+
+    });
 </script>
 </body>
 </html>

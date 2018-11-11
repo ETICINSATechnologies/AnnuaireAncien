@@ -1,6 +1,5 @@
 <?php
 include 'connectDB.php';
-session_start();
 $index = 'icone';
 
 if (isset($_SESSION['id']) and isset($_FILES[$index]))

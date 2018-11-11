@@ -105,7 +105,7 @@ section {
 .position_container {
     height: 9vmin;
     display: grid;
-    grid-template-columns: 3fr 2fr 1fr;
+    grid-template-columns: 4fr 1fr 1fr;
     grid-template-rows: 4vmin 1fr;
     border: 0.3vmin solid black;
     padding: 0.5vmin;
@@ -121,9 +121,9 @@ section {
 }
 
 .position_container input[type='text'] {
-    width: 70%;
+    width: 85%;
     justify-self: left;
-    font-size: 2.5vmin;
+    font-size: 3vmin;
 }
 
 .position_container img {

@@ -12,6 +12,7 @@
 
 <section id="form_area">
     <?php include 'profil_form.php'; ?>
+    <?php include 'position_form.php'; ?>
 </section>
 
 <section id="image_window" class="window">

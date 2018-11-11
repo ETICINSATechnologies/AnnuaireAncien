@@ -1,7 +1,6 @@
 <?php
 include 'connectDB.php';
-
-session_start();
+include 'JwtCodec.php';
 
 $validAttributes = array('email', 'password');
 
@@ -19,9 +18,11 @@ if (validateRequest($validAttributes, $attributes))
 
     if ($admin)
     {
-        $_SESSION['id'] = $admin['id'];
-        $_SESSION['admin'] = true;
-        echo "admin";
+        echo JwtCodec::encode(
+            [
+                'admin' => 1,
+                'id' => $admin['id']
+            ]);
     }
     else
     {
@@ -29,14 +30,14 @@ if (validateRequest($validAttributes, $attributes))
 
         if ($membre)
         {
-            $_SESSION['id'] = $membre['id'];
-            $_SESSION['admin'] = false;
-            echo "membre";
+            echo JwtCodec::encode(
+                [
+                    'admin' => 0,
+                    'id' => $membre['id']
+                ]);
         }
         else
         {
-            $_SESSION['id'] = "";
-            $_SESSION['admin'] = "";
             echo false;
         }
     }

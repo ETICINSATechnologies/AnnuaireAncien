@@ -10,7 +10,7 @@ function connect()
         {
             parameters['email'] = parameters['email'].toLowerCase();
 
-            $.post(
+            $.get(
                 '../../services/connexion.php',
                 parameters,
                 function (response)
@@ -19,20 +19,18 @@ function connect()
                     {
                         if (response)
                         {
-                            if (response === 'admin')
-                            {
-                                document.location.href = "ajout.php";
-                            }
-                            else
-                            {
-                                document.location.href = "profil.php";
-                            }
+                            document.cookie = 'jwt=' + response;
 
+                            var payload = JSON.parse(window.atob(response.split('.')[1]));
+
+                            if (payload['admin'] === 1)
+                                document.location.href = "ajout.php";
+
+                            else
+                                document.location.href = "profil.php";
                         }
                         else
-                        {
                             document.getElementById("info_area").innerHTML = "Identifiant ou mot de passe invalide !";
-                        }
                     }
                     catch (e)
                     {

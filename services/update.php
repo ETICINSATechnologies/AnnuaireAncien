@@ -1,7 +1,7 @@
 <?php
 include 'connectDB.php';
 include 'sendEmail.php';
-session_start();
+include 'JwtCodec.php';
 
 $validAttributes = array('firstname', 'lastname', 'phone', 'email', 'password', 'company', 'etic_position', 'mandate_year', 'department');
 
@@ -10,9 +10,12 @@ $parametersNb = sizeof($method);
 $attributes = array_keys($method);
 $values = array_values($method);
 
-if (validateRequest($validAttributes, $attributes) && isset($_SESSION['id']))
+$headers = apache_request_headers();
+
+if (validateRequest($validAttributes, $attributes) && isset($headers['Authorization']))
 {
-    if ($_SESSION['admin'])
+    $signature = JwtCodec::decode($headers['Authorization']);
+    if ($signature['admin'])
     {
         if (validateCreation($method))
         {
@@ -49,11 +52,18 @@ if (validateRequest($validAttributes, $attributes) && isset($_SESSION['id']))
 
             $success = bindExecute($bdd, $sql, $values);
             if ($success)
-                sendEmail($method["email"], $password);
-            echo json_encode($success);
+            {
+                // sendEmail($method["email"], $password);
+                echo json_encode(
+                    [
+                        'id' => $bdd->lastInsertId()
+                    ]);
+            }
         }
         else
+        {
             echo false;
+        }
     }
     else
     {
@@ -80,7 +90,7 @@ if (validateRequest($validAttributes, $attributes) && isset($_SESSION['id']))
 
         $sql .= ' WHERE ';
 
-        $sql .= 'id' . ' = ' . $_SESSION['id'];
+        $sql .= 'id' . ' = ' . $signature['id'];
 
         echo bindExecute($bdd, $sql, $values);
     }
@@ -127,5 +137,5 @@ function validateCreation($_method)
 function randomPassword($length)
 {
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    return substr(str_shuffle($chars),0,$length);
+    return substr(str_shuffle($chars), 0, $length);
 }

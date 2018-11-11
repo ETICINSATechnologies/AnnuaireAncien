@@ -42,6 +42,7 @@ function update(create)
                     {
                         info_area.innerHTML = "<p style='color: red'> Un problème est survenu lors de la sauvegarde Veuillez réessayer !</p>";
                     }
+                    updatePosition(JSON.parse(response)["id"]);
                 },
                 'text'
             );
@@ -51,12 +52,11 @@ function update(create)
             document.getElementById("info_area").innerHTML = "<p style='color: red'> Veuillez saisir votre nom, prénom et email ! </p>";
         }
     });
-
-    updatePosition();
 }
 
-function updatePosition()
+function updatePosition(membre_id)
 {
+    var data = {};
     var positions = [];
     var id = 0;
     $(".position_container").each(function() {
@@ -72,9 +72,12 @@ function updatePosition()
         id++;
     });
 
+    data['membre'] = membre_id;
+    data['positions'] = positions;
+
     $.post(
         '../../services/updatePosition.php',
-        JSON.stringify(positions),
+        JSON.stringify(data),
         function(response) {
             console.log(response);
         }
@@ -226,10 +229,10 @@ function addAPosition(row)
 
     var position = '';
     var year = '';
-    if (row && row['position'] && row['year'])
+    if (row && row['etic_position'] && row['mandate_year'])
     {
-        position = row['position'];
-        year = row['year'];
+        position = row['etic_position'];
+        year = row['mandate_year'];
     }
 
     if (positionNumber < 4) {

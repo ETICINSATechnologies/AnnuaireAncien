@@ -81,7 +81,11 @@ function updatePosition(membre_id)
         function(response) {
             console.log(response);
         }
-    )
+    );
+
+    sleep(10).then(() => {
+        initPosition();
+    });
 }
 
 function lowercase(array, attributs)
@@ -89,13 +93,9 @@ function lowercase(array, attributs)
     for (i = 0; i < attributs.length; i++)
     {
         if (array[attributs[i]] != null)
-        {
             array[attributs[i]] = array[attributs[i]].toLowerCase();
-        }
         else
-        {
             array[attributs[i]] = '';
-        }
     }
 
     return array;
@@ -156,6 +156,7 @@ function changePassword(new_password)
                 {
                     info_area.innerHTML = "<p> Les informations ont bien été sauvegardées!</p>";
                     info_area.style.setProperty("color", "#009e11");
+                    $('#password_form')[0].reset();
                     init();
                 }
                 else
@@ -171,7 +172,6 @@ function changePassword(new_password)
         'text'
     );
 }
-
 
 function updatePassword()
 {
@@ -250,3 +250,8 @@ function addAPosition(row)
         positions.appendChild(new_position);
     }
 }
+
+const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+};
+

@@ -8,7 +8,7 @@ function init()
             }
         });
 
-        // $('#profil_form')[0].reset();
+        $('#profil_form')[0].reset();
         $.get(
             '../../services/init.php',
             function (response) {
@@ -18,30 +18,36 @@ function init()
                         insertInfos(row);
                     }
                     else
+                    {
                         console.log("no response");
-                        //document.location.href = "../src/accueil.php";
+                        document.location.href = "../src/accueil.php";
+                    }
                 }
                 catch (e) {
                     console.log("error");
-                    //document.location.href = "../src/accueil.php";
+                    document.location.href = "../src/accueil.php";
                 }
             },
             'text'
         );
 
-        $.post(
-            '../../services/initPosition.php',
-            function(response)
-            {
-                if (response)
-                {
-                    var rows = JSON.parse(response);
-                    insertPositions(rows)
-                }
-            }
-        )
-
+        initPosition();
     });
+}
+
+function initPosition()
+{
+    $.post(
+        '../../services/initPosition.php',
+        function(response)
+        {
+            if (response)
+            {
+                var rows = JSON.parse(response);
+                insertPositions(rows)
+            }
+        }
+    )
 }
 
 function getCookie(name)
@@ -86,5 +92,5 @@ function insertPositions(rows)
 
 document.getElementById('deconnexion').addEventListener('click', function () {
     document.cookie = "jwt=";
-    init();
+    document.location.href = "../src/accueil.php";
 });

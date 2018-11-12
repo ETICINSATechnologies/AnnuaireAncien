@@ -1,33 +1,35 @@
 <?php
 include 'connectDB.php';
-session_start();
+include 'JwtCodec.php';
 
 $method = $_POST;
 
-if(isset($_SESSION['id']))
+$headers = apache_request_headers();
+
+if (isset($headers['Authorization']))
 {
-    $id = $_SESSION['id'];
-    $password = hash('sha512', $method["password"]);
-
-
-    $sql = 'SELECT id FROM ann_membres WHERE id = :id AND password = :password';
-
-    $stmt = $bdd->prepare($sql);
-
-    $stmt->bindParam(':id', $id);
-    $stmt->bindParam(':password', $password);
-
-    $stmt->execute();
-
-
-    if (!$stmt)
+    $signature = JwtCodec::decode($headers['Authorization']);
+    if ($signature['id'])
     {
-        die ('error because ' . print_r($bdd->errorInfo(), true));
-    }
-    else
-    {
-        $data = $stmt->fetch();
-        echo json_encode(!empty($data));
+        $id = $signature['id'];
+        $password = hash('sha512', $method["password"]);
+
+        $sql = 'SELECT id FROM ann_membres WHERE id = :id AND password = :password';
+
+        $stmt = $bdd->prepare($sql);
+
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':password', $password);
+
+        $stmt->execute();
+
+        if (!$stmt)
+            die ('error because ' . print_r($bdd->errorInfo(), true));
+        else
+        {
+            $data = $stmt->fetch();
+            echo json_encode(!empty($data));
+        }
     }
 }
 

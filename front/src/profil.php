@@ -49,11 +49,11 @@
 <script src="../script/update.js"></script>
 <script src="../script/init.js"></script>
 <script>
-    document.getElementById('image').addEventListener('click', function ()
+    /*document.getElementById('image').addEventListener('click', function ()
     {
         document.getElementById('image_window').style.display = 'block';
         document.getElementById('form_area').style.setProperty("opacity", "0.2");
-    });
+    });*/
     document.getElementById('cancel_image').addEventListener('click', function ()
     {
         document.getElementById('image_window').style.display = 'none';
@@ -70,6 +70,11 @@
         document.getElementById('form_area').style.setProperty("opacity", "");
     });
     document.getElementById('update_input').addEventListener('click', update);
+    document.getElementById('deconnexion').addEventListener('click', function()
+    {
+        document.cookie = "jwt=";
+
+    });
 </script>
 </body>
 </html>

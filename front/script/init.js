@@ -2,50 +2,63 @@ function init()
 {
     $(document).ready(function ()
     {
-        $.post(
+        $.ajaxSetup({
+            headers:{
+                'Authorization': getCookie('jwt')
+            }
+        });
+
+        $('#profil_form')[0].reset();
+        $.get(
             '../../services/init.php',
-            function (response)
-            {
-                try
-                {
-                    if (response)
-                    {
+            function (response) {
+                try {
+                    if (response) {
                         var row = JSON.parse(response);
                         insertInfos(row);
                     }
                     else
                     {
+                        console.log("no response");
                         document.location.href = "../src/accueil.php";
                     }
                 }
-                catch (e)
-                {
+                catch (e) {
+                    console.log("error");
                     document.location.href = "../src/accueil.php";
                 }
             },
             'text'
         );
 
-        $.post(
-            '../../services/initPosition.php',
-            function(response)
-            {
-                try
-                {
-                    if (response)
-                    {
-                        var rows = JSON.parse(response);
-                        insertPositions(rows)
-                    }
-                }
-                catch(e)
-                {
-                    document.location.href = "../src/accueil.php";
-                }
-            }
-        )
-
+        initPosition();
     });
+}
+
+function initPosition()
+{
+    $.post(
+        '../../services/initPosition.php',
+        function(response)
+        {
+            if (response)
+            {
+                var rows = JSON.parse(response);
+                insertPositions(rows)
+            }
+        }
+    )
+}
+
+function getCookie(name)
+{
+    var real_name = name + '=';
+    if (document.cookie.search(real_name) === 0)
+    {
+        return document.cookie.split(real_name)[1].split(';')[0];
+    }
+
+    return '';
 }
 
 function insertInfos(row)
@@ -56,8 +69,6 @@ function insertInfos(row)
     document.getElementById('phone').setAttribute('value', format('phone', row));
     document.getElementById('department').setAttribute('value', format('department', row));
     document.getElementById('company').setAttribute('value', format('company', row));
-    // document.getElementById('etic_position').setAttribute('value', format('etic_position', row));
-    // document.getElementById('mandate_year').setAttribute('value', format('mandate_year', row));
 
     var img = document.createElement("img");
     var image = document.getElementById('image');
@@ -78,3 +89,8 @@ function insertPositions(rows)
         addAPosition(rows[i])
     }
 }
+
+document.getElementById('deconnexion').addEventListener('click', function () {
+    document.cookie = "jwt=";
+    document.location.href = "../src/accueil.php";
+});

@@ -1,7 +1,7 @@
 <?php
 include 'connectDB.php';
 
-$validAttributes = array('firstname', 'lastname', 'company', 'mandate_year', 'id');
+$validAttributes = array('firstname', 'lastname','etic_position', 'company', 'mandate_year', 'id');
 
 $method = $_POST;
 $parametersNb = sizeof($method);

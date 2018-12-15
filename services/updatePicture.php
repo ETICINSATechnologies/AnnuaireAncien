@@ -60,15 +60,18 @@ if (isset($headers['Authorization']))
                 {
                     echo json_encode(true);
                     header('Location: http://localhost/AnnuaireAncien/front/src/profil.php');
+                    echo $data;
                     exit();
-                    //echo $data;
                 }
             }
             else
             {
-                echo FALSE;
+                header('Location: http://localhost/AnnuaireAncien/front/src/profil.php');
+                echo 'dsjksjk';
+                exit();
             }
         }
     }
 }
+
 

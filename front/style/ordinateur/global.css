@@ -93,9 +93,6 @@ nav * {
 nav *:hover {
     /*color: rgba(0, 83, 96, 0.8);*/
     color: rgba(155, 202, 139, 1);
-}
-
-nav *:hover {
     cursor: pointer;
 }
 

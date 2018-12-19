@@ -80,8 +80,8 @@
 }
 
 #search_form input[type="text"] {
-    font-size: 2vw;
-    height: 3vw;
+    font-size: 1.5vw;
+    height: 2vw;
 
     width: 100%;
 }
@@ -89,7 +89,7 @@
 #search_form p {
     text-align: left;
 
-    font-size: 2vw;
+    font-size: 1.5vw;
 }
 
 #search_input {
@@ -171,7 +171,7 @@
 }
 
 #p_info {
-    font-size: 2.5vw;
+    font-size: 2vw;
 }
 
 #info {

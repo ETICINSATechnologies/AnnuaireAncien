@@ -14,6 +14,7 @@
         <form id="search_form">
             <p> Nom </p> <input type="text" id="lastname">
             <p> Prénom </p> <input type="text" id="firstname">
+            <p> Poste </p> <input type="text" id="etic_position">
             <p> Entreprise </p> <input type="text" id="company">
             <p> Année </p> <input type="text" id="mandate_year">
             <input id="search_input" type="button" value="Rechercher" onclick="search()">
